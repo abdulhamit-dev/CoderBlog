@@ -3,8 +3,8 @@
         <img src="assets/primeng.svg" height="40" class="p-mr-2">
     </ng-template>
     <ng-template pTemplate="end">
-        
-        <button #btn type="button" pButton icon="pi pi-fw pi-user" label="Admin" (click)="menu.toggle($event)"></button>
+        <button #btn type="button" *ngIf="!(aktifKullanici | async)" pButton icon="pi pi-fw pi-user" label="Login" (click)="Login()"></button>
+        <button #btn type="button" *ngIf="(aktifKullanici | async)"  pButton icon="pi pi-fw pi-user" [label]="kullanici.kullaniciAdi" (click)="menu.toggle($event)"></button>
     </ng-template>
   </p-menubar>
   <p-tieredMenu #menu [model]="profilItems" [popup]="true"></p-tieredMenu>

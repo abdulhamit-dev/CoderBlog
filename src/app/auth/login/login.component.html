@@ -1,1 +1,27 @@
-<p>login works!</p>
+<div class="p-grid" style="margin-top: 50px;">
+    <div class="p-md-3 p-sm-12">
+        <div class="box"></div>
+    </div>
+    <div class="p-md-6 p-sm-12">
+        <div class="box">
+            <p-card header="Giriş">
+                <div class="p-fluid p-formgrid">
+                    <div class="p-field">
+                        <label >Kullanıcı Adı</label>
+                        <input [(ngModel)]="kullanici.kullaniciAdi" type="text" pInputText> 
+                    </div>
+                    <div class="p-field">
+                        <label >Şifre</label>
+                        <input  [(ngModel)]="kullanici.sifre" type="text" pInputText> 
+                    </div>
+                    <div class="p-field">
+                      <p-button label="Giriş Yap" (click)="GirisYap()" [style]="{'width': '120px'}"></p-button>
+                    </div>
+                </div>
+            </p-card>
+        </div>
+    </div>
+    <div class="p-md-3 p-sm-12">
+        <div class="box"></div>
+    </div>
+</div>
