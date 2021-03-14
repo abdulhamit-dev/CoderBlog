@@ -1,9 +1,8 @@
 export class Yazi {
-    id:number
-    kullaniciAdi:string
-    ad:string
-    soyad:string
-    sifre:string
-    ePosta:string
-    kayitTarihi:Date
+ id:number
+ kategoriId:number
+ kullaniciId:number
+ yaziBaslik:string
+ yaziIcerik:string
+ yaziTarih:Date
 }
