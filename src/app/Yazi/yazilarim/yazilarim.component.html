@@ -1,1 +1,15 @@
-<p>yazilarim works!</p>
+
+<br>
+<div class="p-grid">
+    <div class=" p-lg-3 p-md-4  p-sm-6" *ngFor="let yazi of yaziList">
+        <p-card header="{{yazi.yaziBaslik}}" [style]="{'width': '100%'}" styleClass="p-card-shadow">
+            <ng-template pTemplate="header">
+                <img alt="Card" src="assets/showcase/images/usercard.png">
+            </ng-template>
+            {{yazi.yaziIcerik}}
+            <ng-template pTemplate="footer">
+                <p-button label="Düzenle" icon="pi pi-check"></p-button>
+            </ng-template>
+        </p-card>
+    </div>
+</div>

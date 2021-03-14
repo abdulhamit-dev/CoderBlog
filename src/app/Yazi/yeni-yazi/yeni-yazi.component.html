@@ -8,7 +8,7 @@
             <p-card header="Yazi Oluştur">
                 <div class="p-fluid p-formgrid">
                     <div class="p-field">
-                        <p-dropdown [options]="kategoriList" [(ngModel)]="kategori" optionLabel="name"></p-dropdown>
+                        <p-dropdown [options]="kategoriList" [(ngModel)]="kategori" optionLabel="adi"  placeholder="Kategori" ></p-dropdown>
                     </div>
                     <div class="p-field">
                             <input type="text" id="txtbaslik" placeholder="Başlık" pInputText [(ngModel)]="yazi.yaziBaslik"> 

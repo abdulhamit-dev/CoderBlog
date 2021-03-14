@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Yazi } from 'src/app/models/yazi/yazi';
+import { YaziService } from 'src/app/services/yazi/yazi.service';
 
 @Component({
   selector: 'app-yazilarim',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class YazilarimComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private yaziService:YaziService) { }
+  yaziList:Yazi[]=[]
   ngOnInit(): void {
+    this.yaziService.YaziListesiKullanici().subscribe(rv=>{
+      this.yaziList=rv
+    })
   }
 
 }
