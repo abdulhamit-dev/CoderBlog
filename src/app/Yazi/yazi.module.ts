@@ -15,6 +15,7 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
 import { CardModule } from 'primeng/card';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
+import {DialogModule} from 'primeng/dialog';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { DropdownModule } from 'primeng/dropdown';
     TieredMenuModule,
     CardModule,
     InputTextareaModule,
-    DropdownModule,
+    DropdownModule,DialogModule
   ],
 })
 export class YaziModule {}
