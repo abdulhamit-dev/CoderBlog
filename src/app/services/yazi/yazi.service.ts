@@ -26,7 +26,7 @@ export class YaziService extends PublicService {
 
   YaziDuzenle(yazi: Yazi): Observable<any> {
     yazi.kullaniciId = this.kullanici.id
-    return this.http.post<Yazi>(this.baseUrl + "yazi/Kaydet", yazi)
+    return this.http.post<Yazi>(this.baseUrl + "yazi/YaziKaydet", yazi)
   }
 
   YaziSil(yazi: Yazi): Observable<any> {
