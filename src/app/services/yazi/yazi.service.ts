@@ -49,4 +49,14 @@ export class YaziService extends PublicService {
     return this.http.get<Yazi>(this.baseUrl + 'yazi/get?id=' + id)
   }
 
+  YaziListesiTrendOlanlar():Observable<any>{
+    return this.http.get<Yazi>(this.baseUrl + 'yazi/getlist')
+  }
+
+  YaziListesiYeniler():Observable<any>{
+    return this.http.get<Yazi>(this.baseUrl + 'yazi/getlist')
+  }
+
+
+
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Yazi } from '../models/yazi/yazi';
 import { LoginService } from '../services/auth/login.service';
+import { YaziService } from '../services/yazi/yazi.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,33 @@ import { LoginService } from '../services/auth/login.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private loginService:LoginService) {}
+  constructor(
+    private loginService: LoginService,
+    private yaziService: YaziService
+  ) {}
+
+  yaziListTrend: Yazi[] = [];
+  yaziListYeniler: Yazi[] = [];
 
   ngOnInit(): void {
-    this.loginService.KullaniciBilgisiKontrol()
+    this.loginService.KullaniciBilgisiKontrol();
+    this.YeniYazilar();
+    this.TrendYazilar();
   }
+
+  YeniYazilar() {
+    this.yaziService.YaziListesiYeniler().subscribe((rv) => {
+      this.yaziListYeniler = rv;
+    });
+  }
+
+  TrendYazilar() {
+    this.yaziService.YaziListesiTrendOlanlar().subscribe((rv) => {
+      this.yaziListTrend = rv;
+    });
+  }
+
+  OneriHesaplar() {}
+
+  OneriKategori() {}
 }
