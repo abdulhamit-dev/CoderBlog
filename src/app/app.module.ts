@@ -5,13 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JwtModule } from '@auth0/angular-jwt';
 
-
 import { AccordionModule } from 'primeng/accordion';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 import { InputTextModule } from 'primeng/inputtext';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { CardModule } from 'primeng/card';
+import { DividerModule } from 'primeng/divider';
 
 import { MenubarComponent } from './menubar/menubar.component';
 import { HomeComponent } from './home/home.component';
@@ -21,7 +21,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { YaziModule } from './yazi/yazi.module';
 import { YaziRoutingModule } from './yazi/yazi-routing.module';
 import { FormsModule } from '@angular/forms';
-import {  HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -49,6 +49,7 @@ export function tokenGetter() {
     InputTextModule,
     TieredMenuModule,
     CardModule,
+    DividerModule,
 
     YaziModule,
 
