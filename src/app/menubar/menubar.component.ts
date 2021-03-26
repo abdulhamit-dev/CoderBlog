@@ -41,6 +41,11 @@ export class MenubarComponent implements OnInit {
         routerLink: 'home',
       },
       {
+        label: 'Kategoriler',
+        icon: 'pi pi-fw pi-ellipsis-h',
+        routerLink: 'home',
+      },
+      {
         label: 'Yazı',
         icon: 'pi pi-fw pi-file',
         items: [

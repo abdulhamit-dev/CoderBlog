@@ -1,5 +1,5 @@
 export class Yazi {
- id:number
+ id:number=0;
  kategoriId:number
  kullaniciId:number
  yaziBaslik:string

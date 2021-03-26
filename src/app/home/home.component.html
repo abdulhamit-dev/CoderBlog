@@ -1,6 +1,6 @@
 <br>
 <div class="p-grid">
-    <div class="p-col-12 p-sm-12 p-lg-9 p-md-12 ">
+    <div class="p-col-12 p-sm-12 p-lg-12 p-md-12 ">
         <p-divider align="left" type="dashed">
             <div class="p-d-inline-flex p-ai-center">
                 <i class="far fa-newspaper p-mr-2" style="font-size: x-large;color: green;"></i>
@@ -9,11 +9,13 @@
         </p-divider>
         <div header="Yeni Yazılar" >
             <div class="p-grid">
-                <div class="p-col-12 p-lg-3 p-md-4  p-sm-6" *ngFor="let yazi of yaziListYeniler">
-                    <p-card header="{{yazi.yaziBaslik}}" [style]="{'width': '100%'}" styleClass="p-card-shadow p-shadow-3">
+                <div class="p-col-12 p-lg-3 p-md-4  p-sm-6" *ngFor="let yazi of yaziListYeniler" >
+                    <p-card header="{{yazi.yaziBaslik}}" [style]="{'width': '100%'}" styleClass="p-card-shadow p-shadow-3" [routerLink]="['/yazi/detay/'+yazi.id]">
                         <ng-template pTemplate="header">
                         </ng-template>
-                        {{yazi.yaziIcerik}}
+                        {{(yazi.yaziIcerik.length>70)?yazi.yaziIcerik.substring(0,70)+"...":yazi.yaziIcerik}}
+                        <br *ngIf="yazi.yaziIcerik.length<70">
+                        <br *ngIf="yazi.yaziIcerik.length<70">
                         <ng-template pTemplate="footer">
                             {{yazi.kullaniciId}}
                         </ng-template>
@@ -22,17 +24,8 @@
             </div>
         </div>
     </div>
-    <div class="p-col-12 p-sm-12 p-lg-3 p-md-12 ">
+    <!-- <div class="p-col-12 p-sm-12 p-lg-3 p-md-12 ">
         <div class="p-grid">
-            <div class="p-col-6 p-sm-6 p-lg-12 p-md-12 ">
-                <p-divider align="left" type="dashed">
-                    <div class="p-d-inline-flex p-ai-center">
-                        <i class="fas fa-user-friends p-mr-2" style="font-size: x-large;"></i>
-                        <b>Öneri Hesaplar</b>
-                    </div>
-                </p-divider>
-                <p-card header="Öneri Hesaplar" ></p-card>
-            </div>
             <div class="p-col-6 p-sm-6 p-lg-12 p-md-12 ">
                 <p-divider align="left" type="dashed">
                     <div class="p-d-inline-flex p-ai-center">
@@ -43,7 +36,7 @@
                 <p-card header="Kategori" ></p-card>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 <p-divider align="left" type="dashed">
     <div class="p-d-inline-flex p-ai-center">
@@ -52,12 +45,13 @@
     </div>
 </p-divider>
 <div class="p-grid">
-    <div class=" p-lg-3 p-md-4  p-sm-6" *ngFor="let yazi of yaziListTrend">
-        <p-card header="{{yazi.yaziBaslik}}" [style]="{'width': '100%'}" styleClass="p-card-shadow p-shadow-3">
+    <div class="p-col-12 p-lg-3 p-md-4  p-sm-6" *ngFor="let yazi of yaziListTrend">
+        <p-card header="{{yazi.yaziBaslik}}" [style]="{'width': '100%','cursor':'pointer'}" styleClass="p-card-shadow p-shadow-3" [routerLink]="['/yazi/detay/'+yazi.id]" >
             <ng-template pTemplate="header">
-                <!-- <img alt="Card" src="assets/primeng.svg" height="125" width="125"> -->
             </ng-template>
-            {{yazi.yaziIcerik}}
+            {{(yazi.yaziIcerik.length>70)?yazi.yaziIcerik.substring(0,70)+"...":yazi.yaziIcerik}}
+            <br *ngIf="yazi.yaziIcerik.length<70">
+            <br *ngIf="yazi.yaziIcerik.length<70">
             <ng-template pTemplate="footer">
                 {{yazi.kullaniciId}}
             </ng-template>

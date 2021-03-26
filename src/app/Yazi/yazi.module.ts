@@ -16,6 +16,7 @@ import { CardModule } from 'primeng/card';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
 import {DialogModule} from 'primeng/dialog';
+import { DetayComponent } from './detay/detay.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {DialogModule} from 'primeng/dialog';
     TaslakComponent,
     YazilarimComponent,
     YaziComponent,
+    DetayComponent,
   ],
   imports: [
     CommonModule,

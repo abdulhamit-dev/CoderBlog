@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Yazi } from '../models/yazi/yazi';
 import { LoginService } from '../services/auth/login.service';
 import { YaziService } from '../services/yazi/yazi.service';
@@ -11,9 +12,10 @@ import { YaziService } from '../services/yazi/yazi.service';
 export class HomeComponent implements OnInit {
   constructor(
     private loginService: LoginService,
-    private yaziService: YaziService
+    private yaziService: YaziService,
+    private router:Router
   ) {}
-
+  
   yaziListTrend: Yazi[] = [];
   yaziListYeniler: Yazi[] = [];
 
@@ -26,6 +28,7 @@ export class HomeComponent implements OnInit {
   YeniYazilar() {
     this.yaziService.YaziListesiYeniler().subscribe((rv) => {
       this.yaziListYeniler = rv;
+      
     });
   }
 
@@ -38,4 +41,6 @@ export class HomeComponent implements OnInit {
   OneriHesaplar() {}
 
   OneriKategori() {}
+
+
 }
