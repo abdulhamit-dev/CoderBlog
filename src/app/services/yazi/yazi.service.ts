@@ -50,7 +50,7 @@ export class YaziService extends PublicService {
   }
 
   YaziListesiTrendOlanlar():Observable<any>{
-    return this.http.get<Yazi>(this.baseUrl + 'yazi/getlist')
+    return this.http.get<Yazi>(this.baseUrl + 'yazi/getlisttrendler')
   }
 
   YaziListesiYeniler():Observable<any>{

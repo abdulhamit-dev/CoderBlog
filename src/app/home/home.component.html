@@ -17,7 +17,7 @@
                         <br *ngIf="yazi.yaziIcerik.length<70">
                         <br *ngIf="yazi.yaziIcerik.length<70">
                         <ng-template pTemplate="footer">
-                            {{yazi.kullaniciId}}
+                            {{yazi.kullaniciAdi}}  <span style="float: right;">{{yazi.yaziTarih.toString() | date:"dd.MM.yyyy" }}</span> 
                         </ng-template>
                     </p-card>
                 </div>
@@ -53,7 +53,7 @@
             <br *ngIf="yazi.yaziIcerik.length<70">
             <br *ngIf="yazi.yaziIcerik.length<70">
             <ng-template pTemplate="footer">
-                {{yazi.kullaniciId}}
+                {{yazi.kullaniciAdi}} - {{yazi.yaziTarih.toString() | date }}
             </ng-template>
         </p-card>
     </div>
