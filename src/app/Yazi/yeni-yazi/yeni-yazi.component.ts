@@ -1,3 +1,4 @@
+import { HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Kategori } from 'src/app/models/yazi/kategori';
 import { Yazi } from 'src/app/models/yazi/yazi';
@@ -15,7 +16,7 @@ export class YeniYaziComponent implements OnInit {
   yazi: Yazi = new Yazi()
   kategori: Kategori = new Kategori();
   kategoriList: Kategori[] = [];
-
+  resim:string;
   ngOnInit(): void {
     this.kategoriService.KategoriListesi().subscribe(rv => {
       this.kategoriList = rv
@@ -32,6 +33,29 @@ export class YeniYaziComponent implements OnInit {
         alert('Kayıt Başarısız')
       }
     })
+  }
+ResimGor(event: any){
+  if (event.target.files && event.target.files[0]) {
+    var reader = new FileReader();
+    reader.onload = (event: any) => {
+        this.resim = event.target.result;
+    }
+    reader.readAsDataURL(event.target.files[0]);
+}
+}
+
+  ResimYukle(files:any){
+    let fileToUpload = <File>files[0];
+    const formData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name);
+    formData.append('yazi',"deger","deger1");
+    this.yaziService.ResimYukle(formData).subscribe(event => {
+      if (event.type === HttpEventType.UploadProgress)
+        console.log(Math.round(100 * event.loaded / event.total!))
+      else if (event.type === HttpEventType.Response) {
+        console.log('Upload success.');
+      }
+    });
   }
   
 }
