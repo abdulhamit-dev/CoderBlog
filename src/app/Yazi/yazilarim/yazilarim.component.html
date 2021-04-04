@@ -1,9 +1,9 @@
 <br>
 <div class="p-grid">
-    <div class=" p-lg-3 p-md-4  p-sm-6" *ngFor="let yazi of yaziList">
+    <div class="p-col-12 p-lg-3 p-md-4  p-sm-6" *ngFor="let yazi of yaziList">
         <p-card header="{{yazi.yaziBaslik}}" [style]="{'width': '100%'}" styleClass="p-card-shadow">
             <ng-template pTemplate="header">
-                <img alt="Card" src="assets/primeng.svg" height="125" width="125">
+                <img alt="Card"  *ngIf="yazi.yaziKapakResim!=null" src="assets/yaziKapakResim/{{yazi.yaziKapakResim}}" height="auto" width="100%">
             </ng-template>
             {{yazi.yaziIcerik}}
             <ng-template pTemplate="footer">

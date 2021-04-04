@@ -16,46 +16,60 @@ export class YeniYaziComponent implements OnInit {
   yazi: Yazi = new Yazi()
   kategori: Kategori = new Kategori();
   kategoriList: Kategori[] = [];
-  resim:string;
+  resim: string;
+  yaziKapakResmi: File;
   ngOnInit(): void {
     this.kategoriService.KategoriListesi().subscribe(rv => {
       this.kategoriList = rv
     })
   }
 
-  Kaydet() {
-    this.yazi.kategoriId = this.kategori.id
-    this.yaziService.YaziEkle(this.yazi).subscribe(x => {
-      if (x) {
-        alert('Kayıt Başarılı')
+  // Kaydet() {
+  //   this.yazi.kategoriId = this.kategori.id
+  //   this.yaziService.YaziEkle(this.yazi).subscribe(x => {
+  //     if (x) {
+  //       alert('Kayıt Başarılı')
 
-      } else {
-        alert('Kayıt Başarısız')
+  //     } else {
+  //       alert('Kayıt Başarısız')
+  //     }
+  //   })
+  // }
+
+  ResimGor(event: any) {
+    this.yaziKapakResmi = <File>event.target.files[0];
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.resim = event.target.result;
       }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+
+  YaziKaydet() {
+    this.yaziService.YaziEkle(this.yazi,this.yaziKapakResmi).subscribe(rv => {
+      
     })
   }
-ResimGor(event: any){
-  if (event.target.files && event.target.files[0]) {
-    var reader = new FileReader();
-    reader.onload = (event: any) => {
-        this.resim = event.target.result;
-    }
-    reader.readAsDataURL(event.target.files[0]);
-}
-}
 
-  ResimYukle(files:any){
-    let fileToUpload = <File>files[0];
-    const formData = new FormData();
-    formData.append('file', fileToUpload, fileToUpload.name);
-    formData.append('yazi',"deger","deger1");
-    this.yaziService.ResimYukle(formData).subscribe(event => {
-      if (event.type === HttpEventType.UploadProgress)
-        console.log(Math.round(100 * event.loaded / event.total!))
-      else if (event.type === HttpEventType.Response) {
-        console.log('Upload success.');
-      }
-    });
-  }
-  
+
+
+  // ResimYukle(files: any) {
+
+  //   let fileToUpload = <File>files[0];
+  //   const formData = new FormData();
+
+  //   formData.append('file', fileToUpload, fileToUpload.name);
+  //   formData.append('yazi', "deger", "deger1");
+
+  //   this.yaziService.ResimYukle(formData).subscribe(event => {
+  //     if (event.type === HttpEventType.UploadProgress)
+  //       console.log(Math.round(100 * event.loaded / event.total!))
+  //     else if (event.type === HttpEventType.Response) {
+  //       console.log('Upload success.');
+  //     }
+  //   });
+  // }
+
 }

@@ -24,10 +24,22 @@ export class YaziService extends PublicService {
     });
   }
 
-  YaziEkle(yazi: Yazi): Observable<any> {
+
+  // YaziEkle(yazi: Yazi): Observable<any> {
+  //   yazi.kullaniciId = this.kullanici.id;
+  //   yazi.yaziTarih = new Date();
+  //   return this.http.post<Yazi>(this.baseUrl + 'yazi/YaziKaydet', yazi);
+  // }
+
+  YaziEkle(yazi: Yazi,yaziKapakResmi: File): Observable<any> {
+ 
+    const formData = new FormData();
     yazi.kullaniciId = this.kullanici.id;
     yazi.yaziTarih = new Date();
-    return this.http.post<Yazi>(this.baseUrl + 'yazi/YaziKaydet', yazi);
+    formData.append('yazi', JSON.stringify(yazi));
+    formData.append('yaziKapakResim', yaziKapakResmi);
+
+    return this.http.post<Yazi>(this.baseUrl + 'yazi/YeniYaziKaydet', formData);
   }
 
   YaziDuzenle(yazi: Yazi): Observable<any> {
@@ -42,9 +54,9 @@ export class YaziService extends PublicService {
   YaziListesiKullanici(): Observable<Yazi[]> {
     return this.http.get<Yazi[]>(
       this.baseUrl +
-        'yazi/getlistfilter?kullaniciId=' +
-        this.kullanici.id +
-        '&kategoriId=0'
+      'yazi/getlistfilter?kullaniciId=' +
+      this.kullanici.id +
+      '&kategoriId=0'
     );
   }
 
@@ -57,10 +69,10 @@ export class YaziService extends PublicService {
   YaziListesiKullaniciKategori(kategoriId: number): Observable<Yazi[]> {
     return this.http.get<Yazi[]>(
       this.baseUrl +
-        'yazi/getlistfilter?kullaniciId=' +
-        this.kullanici.id +
-        '&kategoriId=' +
-        kategoriId
+      'yazi/getlistfilter?kullaniciId=' +
+      this.kullanici.id +
+      '&kategoriId=' +
+      kategoriId
     );
   }
 
@@ -73,8 +85,12 @@ export class YaziService extends PublicService {
   }
 
   YaziListesiYeniler(): Observable<any> {
+
     return this.http.get<Yazi>(this.baseUrl + 'yazi/getlistyeniler', {
-      headers: this.headers,
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+      }),
     });
   }
 

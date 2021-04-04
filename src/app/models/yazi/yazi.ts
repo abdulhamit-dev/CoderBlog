@@ -6,4 +6,5 @@ export class Yazi {
  yaziBaslik:string
  yaziIcerik:string
  yaziTarih:Date
+ yaziKapakResim:string
 }
