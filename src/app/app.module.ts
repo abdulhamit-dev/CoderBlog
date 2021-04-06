@@ -50,6 +50,7 @@ export function tokenGetter() {
     TieredMenuModule,
     CardModule,
     DividerModule,
+    
 
     YaziModule,
 

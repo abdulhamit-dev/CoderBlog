@@ -18,23 +18,13 @@ export class YeniYaziComponent implements OnInit {
   kategoriList: Kategori[] = [];
   resim: string;
   yaziKapakResmi: File;
+
   ngOnInit(): void {
     this.kategoriService.KategoriListesi().subscribe(rv => {
       this.kategoriList = rv
     })
   }
 
-  // Kaydet() {
-  //   this.yazi.kategoriId = this.kategori.id
-  //   this.yaziService.YaziEkle(this.yazi).subscribe(x => {
-  //     if (x) {
-  //       alert('Kayıt Başarılı')
-
-  //     } else {
-  //       alert('Kayıt Başarısız')
-  //     }
-  //   })
-  // }
 
   ResimGor(event: any) {
     this.yaziKapakResmi = <File>event.target.files[0];
@@ -55,21 +45,6 @@ export class YeniYaziComponent implements OnInit {
 
 
 
-  // ResimYukle(files: any) {
 
-  //   let fileToUpload = <File>files[0];
-  //   const formData = new FormData();
-
-  //   formData.append('file', fileToUpload, fileToUpload.name);
-  //   formData.append('yazi', "deger", "deger1");
-
-  //   this.yaziService.ResimYukle(formData).subscribe(event => {
-  //     if (event.type === HttpEventType.UploadProgress)
-  //       console.log(Math.round(100 * event.loaded / event.total!))
-  //     else if (event.type === HttpEventType.Response) {
-  //       console.log('Upload success.');
-  //     }
-  //   });
-  // }
 
 }

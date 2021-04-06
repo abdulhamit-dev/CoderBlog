@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { YaziDto } from '../models/Dtos/yazi/YaziDto';
 import { Yazi } from '../models/yazi/yazi';
 import { LoginService } from '../services/auth/login.service';
 import { YaziService } from '../services/yazi/yazi.service';
@@ -16,8 +17,8 @@ export class HomeComponent implements OnInit {
     private router:Router
   ) {}
   
-  yaziListTrend: Yazi[] = [];
-  yaziListYeniler: Yazi[] = [];
+  yaziListTrend: YaziDto[] = [];
+  yaziListYeniler: YaziDto[] = [];
 
   ngOnInit(): void {
     this.loginService.KullaniciBilgisiKontrol();
@@ -37,10 +38,4 @@ export class HomeComponent implements OnInit {
       this.yaziListTrend = rv;
     });
   }
-
-  OneriHesaplar() {}
-
-  OneriKategori() {}
-
-
 }

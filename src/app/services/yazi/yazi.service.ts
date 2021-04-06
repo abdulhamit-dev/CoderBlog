@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { YaziDto } from 'src/app/models/Dtos/yazi/YaziDto';
 import { Kullanici } from 'src/app/models/kullanici/kullanici';
 import { Yazi } from 'src/app/models/yazi/yazi';
 import { LoginService } from '../auth/login.service';
@@ -24,13 +25,6 @@ export class YaziService extends PublicService {
     });
   }
 
-
-  // YaziEkle(yazi: Yazi): Observable<any> {
-  //   yazi.kullaniciId = this.kullanici.id;
-  //   yazi.yaziTarih = new Date();
-  //   return this.http.post<Yazi>(this.baseUrl + 'yazi/YaziKaydet', yazi);
-  // }
-
   YaziEkle(yazi: Yazi,yaziKapakResmi: File): Observable<any> {
  
     const formData = new FormData();
@@ -39,7 +33,7 @@ export class YaziService extends PublicService {
     formData.append('yazi', JSON.stringify(yazi));
     formData.append('yaziKapakResim', yaziKapakResmi);
 
-    return this.http.post<Yazi>(this.baseUrl + 'yazi/YeniYaziKaydet', formData);
+    return this.http.post<Yazi>(this.baseUrl + 'yazi/YaziKaydet', formData);
   }
 
   YaziDuzenle(yazi: Yazi): Observable<any> {
@@ -81,12 +75,12 @@ export class YaziService extends PublicService {
   }
 
   YaziListesiTrendOlanlar(): Observable<any> {
-    return this.http.get<Yazi>(this.baseUrl + 'yazi/getlisttrendler');
+    return this.http.get<YaziDto>(this.baseUrl + 'yazi/getlisttrendler');
   }
 
   YaziListesiYeniler(): Observable<any> {
 
-    return this.http.get<Yazi>(this.baseUrl + 'yazi/getlistyeniler', {
+    return this.http.get<YaziDto>(this.baseUrl + 'yazi/getlistyeniler', {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + localStorage.getItem('jwt'),
@@ -94,10 +88,4 @@ export class YaziService extends PublicService {
     });
   }
 
-  ResimYukle(file: any) {
-    return this.http.post(this.baseUrl + 'yazi/FileUpload', file, {
-      reportProgress: true,
-      observe: 'events',
-    });
-  }
 }
