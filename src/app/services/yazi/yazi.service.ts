@@ -2,8 +2,10 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { YaziDto } from 'src/app/models/Dtos/yazi/YaziDto';
+import { YorumDto } from 'src/app/models/Dtos/yazi/YorumDto';
 import { Kullanici } from 'src/app/models/kullanici/kullanici';
 import { Yazi } from 'src/app/models/yazi/yazi';
+import { Yorum } from 'src/app/models/yazi/yorum';
 import { LoginService } from '../auth/login.service';
 import { PublicService } from '../public.service';
 
@@ -70,8 +72,8 @@ export class YaziService extends PublicService {
     );
   }
 
-  YaziGetir(id: number): Observable<Yazi> {
-    return this.http.get<Yazi>(this.baseUrl + 'yazi/get?id=' + id);
+  YaziGetir(id: number): Observable<YaziDto> {
+    return this.http.get<YaziDto>(this.baseUrl + 'yazi/get?id=' + id);
   }
 
   YaziListesiTrendOlanlar(): Observable<any> {
@@ -86,6 +88,10 @@ export class YaziService extends PublicService {
         Authorization: 'Bearer ' + localStorage.getItem('jwt'),
       }),
     });
+  }
+
+  YaziYorumlari(id: number):Observable<any>{
+    return this.http.get<YorumDto>(this.baseUrl + 'yazi/getlistyaziyorum?yaziId='+id);
   }
 
 }

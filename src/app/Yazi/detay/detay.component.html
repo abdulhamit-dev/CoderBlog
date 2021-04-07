@@ -1,17 +1,43 @@
-
 <div class="p-grid" style="margin-top: 20px;">
     <div class="p-col p-md-2 p-sm-12">
         <div class="box"></div>
     </div>
     <div class="p-col-12 p-md-8 p-sm-12">
         <div class="box">
-            <p-card [header]="yazi.yaziBaslik">
-                {{yazi.yaziIcerik}}
+
+            <p-card [style]="{'width': '100%'}" styleClass="p-card-shadow p-shadow-3">
+                <ng-template pTemplate="header">
+                    <br>
+                    <div class="p-text-center"> <img alt="Card" *ngIf="yazi.yaziKapakResim!=null"
+                            [style]="{'width':'50%','height':'auto'}"
+                            src="assets/yaziKapakResim/{{yazi.yaziKapakResim}}"></div>
+                </ng-template>
+                <span style="font-size: large;"><b>{{yazi.yaziBaslik}}</b></span><br>
+                <span>{{yazi.yaziIcerik}}</span>
                 <ng-template pTemplate="footer">
-                  {{yazi.yaziTarih | date}}
+                    {{yazi.kullaniciAdi}}
+                    <i class="fas fa-heart" style="font-size: 1rem;margin-right: 10px;margin-left: 10px;">
+                        {{yazi.begeniSayisi}}</i>
+                    <i class="fas fa-comments" style="font-size: 1rem"> {{yazi.yorumSayisi}}</i>
+                    <span style="float: right;">{{yazi.yaziTarih.toString() | date:"dd.MM.yyyy" }}</span>
                 </ng-template>
             </p-card>
-           
+            <p-divider>
+    
+            </p-divider>
+            <p-card >
+                <div *ngFor="let yorum of yorumList">
+                    <b>{{yorum.kullaniciAdi}}</b><br>
+                    {{yorum.aciklama}}  <span style="float: right;">{{yorum.kayitTarihi | date:"dd.MM.yyyy"}}</span>
+
+                    <p-divider>
+    
+                    </p-divider>
+                </div>
+              
+                
+            </p-card>
+
         </div>
     </div>
     <div class="p-col-12 p-md-2 p-sm-12">

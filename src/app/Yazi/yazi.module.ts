@@ -17,7 +17,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
 import {DialogModule} from 'primeng/dialog';
 import { DetayComponent } from './detay/detay.component';
-
+import {DividerModule} from 'primeng/divider';
 @NgModule({
   declarations: [
     YeniYaziComponent,
@@ -38,7 +38,7 @@ import { DetayComponent } from './detay/detay.component';
     TieredMenuModule,
     CardModule,
     InputTextareaModule,
-    DropdownModule,DialogModule
+    DropdownModule,DialogModule,DividerModule
   ],
 })
 export class YaziModule {}

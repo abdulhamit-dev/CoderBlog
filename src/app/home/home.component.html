@@ -7,18 +7,26 @@
                 <b>Yeniler</b>
             </div>
         </p-divider>
-        <div header="Yeni Yazılar" >
+        <div header="Yeni Yazılar">
             <div class="p-grid">
-                <div class="p-col-12 p-lg-3 p-md-4  p-sm-6" *ngFor="let yazi of yaziListYeniler" >
-                    <p-card header="{{yazi.yaziBaslik}}" [style]="{'width': '100%'}" styleClass="p-card-shadow p-shadow-3" [routerLink]="['/yazi/detay/'+yazi.id]">
+                <div class="p-col-12 p-lg-3 p-md-4  p-sm-6" *ngFor="let yazi of yaziListYeniler">
+                    <p-card [style]="{'width': '100%'}" styleClass="p-card-shadow p-shadow-3">
                         <ng-template pTemplate="header">
-                            <img alt="Card"  *ngIf="yazi.yaziKapakResim!=null" src="assets/yaziKapakResim/{{yazi.yaziKapakResim}}" height="auto" width="100%">
+                            <img alt="Card" *ngIf="yazi.yaziKapakResim!=null"
+                                src="assets/yaziKapakResim/{{yazi.yaziKapakResim}}" height="250px" width="100%">
                         </ng-template>
-                        {{(yazi.yaziIcerik.length>70)?yazi.yaziIcerik.substring(0,70)+"...":yazi.yaziIcerik}}
+                        <span [routerLink]="['/yazi/detay/'+yazi.id]"
+                            style="cursor: pointer;font-size: large;"><b>{{yazi.yaziBaslik}}</b></span><br>
+                        <span [routerLink]="['/yazi/detay/'+yazi.id]"
+                            style="cursor: pointer;">{{(yazi.yaziIcerik.length>70)?yazi.yaziIcerik.substring(0,70)+"...":yazi.yaziIcerik}}</span>
                         <br *ngIf="yazi.yaziIcerik.length<70">
                         <br *ngIf="yazi.yaziIcerik.length<70">
                         <ng-template pTemplate="footer">
-                            {{yazi.kullaniciAdi}} {{yazi.begeniSayisi}} {{yazi.begeniSayisi}}  <span style="float: right;">{{yazi.yaziTarih.toString() | date:"dd.MM.yyyy" }}</span> 
+                            {{yazi.kullaniciAdi}}
+                            <i class="fas fa-heart" style="font-size: 1rem;margin-right: 10px;margin-left: 10px;">
+                                {{yazi.begeniSayisi}}</i>
+                            <i class="fas fa-comments" style="font-size: 1rem"> {{yazi.yorumSayisi}}</i>
+                            <span style="float: right;">{{yazi.yaziTarih.toString() | date:"dd.MM.yyyy" }}</span>
                         </ng-template>
                     </p-card>
                 </div>
@@ -47,15 +55,18 @@
 </p-divider>
 <div class="p-grid">
     <div class="p-col-12 p-lg-3 p-md-4  p-sm-6" *ngFor="let yazi of yaziListTrend">
-        <p-card header="{{yazi.yaziBaslik}}" [style]="{'width': '100%','cursor':'pointer'}" styleClass="p-card-shadow p-shadow-3" [routerLink]="['/yazi/detay/'+yazi.id]" >
+        <p-card header="{{yazi.yaziBaslik}}" [style]="{'width': '100%','cursor':'pointer'}"
+            styleClass="p-card-shadow p-shadow-3" [routerLink]="['/yazi/detay/'+yazi.id]">
             <ng-template pTemplate="header">
-                <img alt="Card"  *ngIf="yazi.yaziKapakResim!=null" src="assets/yaziKapakResim/{{yazi.yaziKapakResim}}" height="auto" width="100%">
+                <img alt="Card" *ngIf="yazi.yaziKapakResim!=null" src="assets/yaziKapakResim/{{yazi.yaziKapakResim}}"
+                    height="auto" width="100%">
             </ng-template>
             {{(yazi.yaziIcerik.length>70)?yazi.yaziIcerik.substring(0,70)+"...":yazi.yaziIcerik}}
             <br *ngIf="yazi.yaziIcerik.length<70">
             <br *ngIf="yazi.yaziIcerik.length<70">
             <ng-template pTemplate="footer">
-                {{yazi.kullaniciAdi}}  <span style="float: right;">{{yazi.yaziTarih.toString() | date:"dd.MM.yyyy" }}</span> 
+                {{yazi.kullaniciAdi}} <span style="float: right;">{{yazi.yaziTarih.toString() | date:"dd.MM.yyyy"
+                    }}</span>
             </ng-template>
         </p-card>
     </div>
