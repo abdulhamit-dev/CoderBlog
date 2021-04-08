@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { YaziDto } from 'src/app/models/Dtos/yazi/YaziDto';
 import { YorumDto } from 'src/app/models/Dtos/yazi/YorumDto';
 import { Kullanici } from 'src/app/models/kullanici/kullanici';
+import { Begeni } from 'src/app/models/yazi/begeni';
 import { Yazi } from 'src/app/models/yazi/yazi';
 import { Yorum } from 'src/app/models/yazi/yorum';
 import { LoginService } from '../auth/login.service';
@@ -27,8 +28,8 @@ export class YaziService extends PublicService {
     });
   }
 
-  YaziEkle(yazi: Yazi,yaziKapakResmi: File): Observable<any> {
- 
+  YaziEkle(yazi: Yazi, yaziKapakResmi: File): Observable<any> {
+
     const formData = new FormData();
     yazi.kullaniciId = this.kullanici.id;
     yazi.yaziTarih = new Date();
@@ -90,8 +91,23 @@ export class YaziService extends PublicService {
     });
   }
 
-  YaziYorumlari(id: number):Observable<any>{
-    return this.http.get<YorumDto>(this.baseUrl + 'yazi/getlistyaziyorum?yaziId='+id);
+  YaziYorumlari(id: number): Observable<any> {
+    return this.http.get<YorumDto>(this.baseUrl + 'yazi/getlistyaziyorum?yaziId=' + id);
+  }
+
+  Begen(yaziId: number): Observable<Begeni> {
+    var begeni: Begeni = new Begeni();
+    begeni.yaziId = yaziId;
+    begeni.kullaniciId = +this.kullanici.id;
+    begeni.kayitTarihi = new Date();
+
+    return this.http.post<Begeni>(this.baseUrl + "begen/kaydet", begeni);
+  }
+
+  YorumKaydet(yorum: Yorum): Observable<any> {
+    yorum.kullaniciId = +this.kullanici.id;
+    yorum.kayitTarihi = new Date();
+    return this.http.post<Begeni>(this.baseUrl + "yorum/kaydet", yorum);
   }
 
 }

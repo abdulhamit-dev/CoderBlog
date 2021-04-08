@@ -16,10 +16,10 @@
                 <span>{{yazi.yaziIcerik}}</span>
                 <ng-template pTemplate="footer">
                     {{yazi.kullaniciAdi}}
-                    <i class="fas fa-heart" style="font-size: 1rem;margin-right: 10px;margin-left: 10px;">
+                    <i class="fas fa-heart" style="font-size: 1rem;margin-right: 10px;margin-left: 10px;cursor: pointer;" (click)="Begen()">
                         {{yazi.begeniSayisi}}</i>
-                    <i class="fas fa-comments" style="font-size: 1rem"> {{yazi.yorumSayisi}}</i>
-                    <span style="float: right;">{{yazi.yaziTarih.toString() | date:"dd.MM.yyyy" }}</span>
+                    <i class="fas fa-comments" style="font-size: 1rem;cursor: pointer;" (click)="YorumDialog()"> {{yazi.yorumSayisi}}</i>
+                    <span style="float: right;">{{yazi.yaziTarih | date:"dd.MM.yyyy" }}</span>
                 </ng-template>
             </p-card>
             <p-divider>
@@ -44,3 +44,12 @@
         <div class="box"></div>
     </div>
 </div>
+
+
+<p-dialog header="Yorumunuz" [(visible)]="modal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
+        <textarea type="text" id="txtYorum" style="width: 100%;" [rows]="7" placeholder="Yorum yazınız.." pInputTextarea [(ngModel)]="yorum.aciklama"></textarea> 
+        <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="YorumYap()" label="Gönder" styleClass="p-button-text"></p-button>
+        </ng-template>
+</p-dialog>

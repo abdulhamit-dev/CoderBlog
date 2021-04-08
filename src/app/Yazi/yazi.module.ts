@@ -30,7 +30,7 @@ import {DividerModule} from 'primeng/divider';
     CommonModule,
     YaziRoutingModule,
     FormsModule,
-
+    
     AccordionModule,
     ButtonModule,
     MenubarModule,
