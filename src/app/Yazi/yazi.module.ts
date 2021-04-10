@@ -15,9 +15,13 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
 import { CardModule } from 'primeng/card';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
-import {DialogModule} from 'primeng/dialog';
+import { DialogModule } from 'primeng/dialog';
 import { DetayComponent } from './detay/detay.component';
-import {DividerModule} from 'primeng/divider';
+import { DividerModule } from 'primeng/divider';
+
+import { EditorModule } from 'primeng/editor';
+
+
 @NgModule({
   declarations: [
     YeniYaziComponent,
@@ -30,7 +34,7 @@ import {DividerModule} from 'primeng/divider';
     CommonModule,
     YaziRoutingModule,
     FormsModule,
-    
+
     AccordionModule,
     ButtonModule,
     MenubarModule,
@@ -38,7 +42,7 @@ import {DividerModule} from 'primeng/divider';
     TieredMenuModule,
     CardModule,
     InputTextareaModule,
-    DropdownModule,DialogModule,DividerModule
+    DropdownModule, DialogModule, DividerModule, EditorModule
   ],
 })
-export class YaziModule {}
+export class YaziModule { }

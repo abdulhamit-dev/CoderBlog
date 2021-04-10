@@ -13,14 +13,20 @@
                     <p-card [style]="{'width': '100%'}" styleClass="p-card-shadow p-shadow-3">
                         <ng-template pTemplate="header">
                             <img alt="Card" *ngIf="yazi.yaziKapakResim!=null"
-                                src="assets/yaziKapakResim/{{yazi.yaziKapakResim}}" height="250px" width="100%">
+                                src="assets/yaziKapakResim/{{yazi.yaziKapakResim}}" height="auto" width="100%">
                         </ng-template>
+
                         <span [routerLink]="['/yazi/detay/'+yazi.id]"
                             style="cursor: pointer;font-size: large;"><b>{{yazi.yaziBaslik}}</b></span><br>
-                        <span [routerLink]="['/yazi/detay/'+yazi.id]"
-                            style="cursor: pointer;">{{(yazi.yaziIcerik.length>70)?yazi.yaziIcerik.substring(0,70)+"...":yazi.yaziIcerik}}</span>
-                        <br *ngIf="yazi.yaziIcerik.length<70">
-                        <br *ngIf="yazi.yaziIcerik.length<70">
+
+                       <!-- <span [routerLink]="['/yazi/detay/'+yazi.id]"
+                            style="cursor: pointer;">
+                             {{(yazi.yaziIcerik.length>70)?yazi.yaziIcerik.substring(0,70)+"...":yazi.yaziIcerik}} 
+                        </span>
+                      <div [innerHtml]="yazi.yaziIcerik.substring(0,70)"></div>
+
+                         <br *ngIf="yazi.yaziIcerik.length<70">
+                        <br *ngIf="yazi.yaziIcerik.length<70">  -->
                         <ng-template pTemplate="footer">
                             {{yazi.kullaniciAdi}}
                             <i class="fas fa-heart" style="font-size: 1rem;margin-right: 10px;margin-left: 10px;">
@@ -61,9 +67,9 @@
                 <img alt="Card" *ngIf="yazi.yaziKapakResim!=null" src="assets/yaziKapakResim/{{yazi.yaziKapakResim}}"
                     height="auto" width="100%">
             </ng-template>
-            {{(yazi.yaziIcerik.length>70)?yazi.yaziIcerik.substring(0,70)+"...":yazi.yaziIcerik}}
+            <!-- {{(yazi.yaziIcerik.length>70)?yazi.yaziIcerik.substring(0,70)+"...":yazi.yaziIcerik}}
             <br *ngIf="yazi.yaziIcerik.length<70">
-            <br *ngIf="yazi.yaziIcerik.length<70">
+            <br *ngIf="yazi.yaziIcerik.length<70"> -->
             <ng-template pTemplate="footer">
                 {{yazi.kullaniciAdi}} <span style="float: right;">{{yazi.yaziTarih | date:"dd.MM.yyyy"
                     }}</span>
