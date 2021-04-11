@@ -20,7 +20,9 @@ export class YazilarimComponent implements OnInit {
   yazi: Yazi = new Yazi();
   kategori: Kategori = new Kategori();
   kategoriList: Kategori[] = [];
-
+  
+  yaziKapakResmi: File;
+  resim: string="";
   ngOnInit(): void {
     this.yaziService.YaziListesiKullanici().subscribe((rv) => {
       this.yaziList = rv;
@@ -29,6 +31,8 @@ export class YazilarimComponent implements OnInit {
     this.kategoriService.KategoriListesi().subscribe((rv) => {
       this.kategoriList = rv;
     });
+
+   
   }
 
   DuzenleModal(yaziId: number, kategoriId: number) {
@@ -39,11 +43,28 @@ export class YazilarimComponent implements OnInit {
 
   YaziDuzenle() {
     this.yazi.kategoriId = this.kategori.id;
-    this.yaziService.YaziDuzenle(this.yazi).subscribe((x) => {
-      if (!x) {
-        alert('Kayıt Başarısız');
-      }
-    });
+    // this.yaziService.YaziDuzenle(this.yazi).subscribe((x) => {
+    //   if (!x) {
+    //     alert('Kayıt Başarısız');
+    //   }
+    // });
+
+    this.yaziService.YaziEkle(this.yazi,this.yaziKapakResmi).subscribe(rv => {
+      
+    })
+
     this.modalDurumu = false;
+  }
+
+  
+  ResimGor(event: any) {
+    this.yaziKapakResmi = <File>event.target.files[0];
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.resim = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
   }
 }

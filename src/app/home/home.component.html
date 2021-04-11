@@ -18,15 +18,6 @@
 
                         <span [routerLink]="['/yazi/detay/'+yazi.id]"
                             style="cursor: pointer;font-size: large;"><b>{{yazi.yaziBaslik}}</b></span><br>
-
-                       <!-- <span [routerLink]="['/yazi/detay/'+yazi.id]"
-                            style="cursor: pointer;">
-                             {{(yazi.yaziIcerik.length>70)?yazi.yaziIcerik.substring(0,70)+"...":yazi.yaziIcerik}} 
-                        </span>
-                      <div [innerHtml]="yazi.yaziIcerik.substring(0,70)"></div>
-
-                         <br *ngIf="yazi.yaziIcerik.length<70">
-                        <br *ngIf="yazi.yaziIcerik.length<70">  -->
                         <ng-template pTemplate="footer">
                             {{yazi.kullaniciAdi}}
                             <i class="fas fa-heart" style="font-size: 1rem;margin-right: 10px;margin-left: 10px;">

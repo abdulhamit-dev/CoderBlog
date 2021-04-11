@@ -33,6 +33,8 @@ export class YaziService extends PublicService {
     const formData = new FormData();
     yazi.kullaniciId = this.kullanici.id;
     yazi.yaziTarih = new Date();
+    console.log(JSON.stringify(yazi))
+    
     formData.append('yazi', JSON.stringify(yazi));
     formData.append('yaziKapakResim', yaziKapakResmi);
 
