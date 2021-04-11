@@ -21,6 +21,7 @@ import { DialogModule } from 'primeng/dialog';
 import { DetayComponent } from './detay/detay.component';
 import { DividerModule } from 'primeng/divider';
 import { EditorModule } from 'primeng/editor';
+import {TabViewModule} from 'primeng/tabview';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { EditorModule } from 'primeng/editor';
     DropdownModule,
     DialogModule,
     DividerModule,
-    EditorModule
+    EditorModule,
+    TabViewModule
   ],
 })
 export class YaziModule { }

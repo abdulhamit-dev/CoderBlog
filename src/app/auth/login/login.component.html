@@ -3,23 +3,51 @@
         <div class="box"></div>
     </div>
     <div class="p-md-6 p-sm-12">
-        <div class="box">
-            <p-card header="Giriş">
+        <p-tabView styleClass="tabview-custom">
+            <p-tabPanel>
+                <ng-template pTemplate="header">
+                    <i class="pi pi-home"></i>
+                    <span> Giriş</span>
+                </ng-template>
                 <div class="p-fluid p-formgrid">
                     <div class="p-field">
-                        <label >Kullanıcı Adı</label>
-                        <input [(ngModel)]="kullanici.kullaniciAdi" type="text" pInputText> 
+                        <label>Kullanıcı Adı</label>
+                        <input [(ngModel)]="kullanici.kullaniciAdi" type="text" pInputText>
                     </div>
                     <div class="p-field">
-                        <label >Şifre</label>
-                        <input  [(ngModel)]="kullanici.sifre" type="text" pInputText> 
+                        <label>Şifre</label>
+                        <input [(ngModel)]="kullanici.sifre" type="text" pInputText>
                     </div>
                     <div class="p-field">
-                      <p-button label="Giriş Yap" (click)="GirisYap()" [style]="{'width': '120px'}"></p-button>
+                        <p-button label="Giriş Yap" (click)="GirisYap()" [style]="{'width': '120px'}"></p-button>
                     </div>
                 </div>
-            </p-card>
-        </div>
+            </p-tabPanel>
+            <p-tabPanel>
+                <ng-template pTemplate="header">
+                    <i class="pi pi-user"></i>
+                    <span> Üye Ol</span>
+                </ng-template>
+                <div class="p-fluid p-formgrid">
+                    <div class="p-field">
+                        <label>Kullanıcı Adı </label>
+                        <input [(ngModel)]="yeniKullanici.kullaniciAdi" type="text" pInputText>
+                    </div>
+                    <div class="p-field">
+                        <label>Eposta </label>
+                        <input [(ngModel)]="yeniKullanici.ePosta" type="text" pInputText>
+                    </div>
+                    <div class="p-field">
+                        <label>Şifre</label>
+                        <input [(ngModel)]="yeniKullanici.sifre" type="text" pInputText>
+                    </div>
+                   
+                    <div class="p-field">
+                        <p-button label="Kayıt Ol" (click)="KayitYap()" [style]="{'width': '120px'}"></p-button>
+                    </div>
+                </div>
+            </p-tabPanel>
+        </p-tabView>
     </div>
     <div class="p-md-3 p-sm-12">
         <div class="box"></div>

@@ -13,6 +13,7 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import {BadgeModule} from 'primeng/badge';
+import {TabViewModule} from 'primeng/tabview';
 
 import { MenubarComponent } from './menubar/menubar.component';
 import { HomeComponent } from './home/home.component';
@@ -52,6 +53,7 @@ export function tokenGetter() {
     CardModule,
     DividerModule,
     BadgeModule,
+    TabViewModule,
 
     YaziModule,
 
