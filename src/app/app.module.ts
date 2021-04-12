@@ -21,11 +21,9 @@ import { HataComponent } from './hata/hata.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { YaziModule } from './yazi/yazi.module';
-import { YaziRoutingModule } from './yazi/yazi-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { KullaniciModule } from './kullanici/kullanici.module';
-import { KullaniciRoutingModule } from './kullanici/kullanici-routing.module';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -44,9 +42,7 @@ export function tokenGetter() {
     BrowserModule,
     AppRoutingModule,
     YaziModule,
-
     KullaniciModule,
-
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
