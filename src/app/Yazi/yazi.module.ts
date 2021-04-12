@@ -21,7 +21,7 @@ import { DialogModule } from 'primeng/dialog';
 import { DetayComponent } from './detay/detay.component';
 import { DividerModule } from 'primeng/divider';
 import { EditorModule } from 'primeng/editor';
-import {TabViewModule} from 'primeng/tabview';
+import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
   declarations: [
@@ -35,8 +35,8 @@ import {TabViewModule} from 'primeng/tabview';
     CommonModule,
     YaziRoutingModule,
     FormsModule,
-    BrowserModule, HttpClientModule,
-
+    BrowserModule,
+    HttpClientModule,
     AccordionModule,
     ButtonModule,
     MenubarModule,
@@ -48,7 +48,7 @@ import {TabViewModule} from 'primeng/tabview';
     DialogModule,
     DividerModule,
     EditorModule,
-    TabViewModule
+    TabViewModule,
   ],
 })
-export class YaziModule { }
+export class YaziModule {}

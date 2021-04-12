@@ -77,7 +77,7 @@ export class MenubarComponent implements OnInit {
       {
         label: 'Profil',
         icon: 'pi pi-fw pi-user-edit',
-        routerLink: 'home',
+        routerLink: 'kullanici/profil',
       },
       {
         label: 'Ayar',

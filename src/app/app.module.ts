@@ -12,8 +12,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
-import {BadgeModule} from 'primeng/badge';
-import {TabViewModule} from 'primeng/tabview';
+import { BadgeModule } from 'primeng/badge';
+import { TabViewModule } from 'primeng/tabview';
 
 import { MenubarComponent } from './menubar/menubar.component';
 import { HomeComponent } from './home/home.component';
@@ -24,6 +24,8 @@ import { YaziModule } from './yazi/yazi.module';
 import { YaziRoutingModule } from './yazi/yazi-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { KullaniciModule } from './kullanici/kullanici.module';
+import { KullaniciRoutingModule } from './kullanici/kullanici-routing.module';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -41,7 +43,10 @@ export function tokenGetter() {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    YaziRoutingModule,
+    YaziModule,
+
+    KullaniciModule,
+
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
@@ -55,14 +60,13 @@ export function tokenGetter() {
     BadgeModule,
     TabViewModule,
 
-    YaziModule,
-
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
         disallowedRoutes: [],
       },
     }),
+
   ],
   providers: [],
   bootstrap: [AppComponent],
