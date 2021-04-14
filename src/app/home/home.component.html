@@ -17,7 +17,10 @@
                         </ng-template>
 
                         <span [routerLink]="['/yazi/detay/'+yazi.id]"
-                            style="cursor: pointer;font-size: large;"><b>{{yazi.yaziBaslik}}</b></span><br>
+                            style="cursor: pointer;font-size: large;"><b>{{yazi.yaziBaslik}}</b></span>
+                            <span [routerLink]="['/yazi/detay/'+yazi.id]"
+                            style="cursor: pointer;font-size: large;float: right;"><b>{{yazi.kategoriAdi}}</b></span>
+                        <br>
                         <ng-template pTemplate="footer">
                             {{yazi.kullaniciAdi}}
                             <i class="fas fa-heart" style="font-size: 1rem;margin-right: 10px;margin-left: 10px;">
@@ -71,7 +74,7 @@
 <!-- <div class="p-grid">
     <div class="p-col-12 p-sm-12 p-lg-12 p-md-12 ">
         <p-card header="Trend Olanlar" >
-           
+
         </p-card>
     </div>
 

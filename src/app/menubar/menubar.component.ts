@@ -51,7 +51,7 @@ export class MenubarComponent implements OnInit {
         items: [
           {
             label: 'Yeni',
-            icon: 'pi pi-fw pi-save',
+            icon: 'pi pi-fw pi-plus-circle',
             routerLink: 'yazi/yeni',
           },
           {
@@ -60,12 +60,12 @@ export class MenubarComponent implements OnInit {
 
           {
             label: 'Yazılarım',
-            icon: 'pi pi-fw pi-external-link',
+            icon: 'pi pi-fw pi-list',
             routerLink: 'yazi/yazilarim',
           },
           {
             label: 'Taslak',
-            icon: 'pi pi-fw pi-external-link',
+            icon: 'pi pi-fw pi-folder',
             routerLink: 'yazi/taslak',
           },
         ],

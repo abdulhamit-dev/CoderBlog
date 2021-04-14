@@ -4,6 +4,6 @@ export class Kullanici {
     ad: string = ""
     soyad: string = ""
     sifre: string
-    ePosta: string
+    eposta: string
     kayitTarihi: Date
 }

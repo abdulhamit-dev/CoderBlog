@@ -1,2 +1,42 @@
-Profil düzenle
-<input type="text" placeholder="Adınız">
+<div class="p-grid" style="margin-top: 50px;">
+  <div class="p-md-2 p-sm-12">
+    <div class="box"></div>
+  </div>
+  <div class="p-md-8 p-sm-12">
+    <div class="box">
+      <p-card header="Profil Bilgileri - {{kullanici.kullaniciAdi}}">
+        <div class="p-fluid p-formgrid">
+          <div class="p-field">
+            <span class="p-float-label">
+              <input type="text" id="txtAd" class="p-inputtext-sm" pInputText [(ngModel)]="kullanici.ad">
+              <label for="txtAd">Ad</label>
+            </span>
+          </div>
+          <br>
+          <div class="p-field">
+            <span class="p-float-label">
+              <input type="text" id="txtSoyad" class="p-inputtext-sm" pInputText [(ngModel)]="kullanici.soyad">
+              <label for="txtSoyad">Soyad</label>
+            </span>
+          </div>
+          <br>
+          <div class="p-field">
+            <span class="p-float-label">
+              <input type="text" id="txtEposta" class="p-inputtext-sm" readonly pInputText [(ngModel)]="kullanici.eposta">
+              <label for="txtEposta">E posta</label>
+            </span>
+          </div>
+          <br>
+          <div class="p-field">
+          </div>
+          <div class="p-field">
+            <p-button label="Kaydet" (click)="Kaydet()" [style]="{'width': '120px'}"></p-button>
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+  <div class="p-md-2 p-sm-12">
+    <div class="box"></div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 export class YaziDto {
     id: number = 0
     kategoriId: number
+    kategoriAdi:string
     kullaniciAdi: string
     yaziBaslik: string
     yaziIcerik: string
