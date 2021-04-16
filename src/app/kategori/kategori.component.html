@@ -1,0 +1,29 @@
+
+<br>
+<div class="p-grid">
+  <div class="p-col-12 p-sm-12 p-lg-12 p-md-12 ">
+      <div header="Yeni Yazılar">
+          <div class="p-grid">
+              <div class="p-col-12 p-lg-2 p-md-3  p-sm-4" *ngFor="let kategori of kategoriList">
+                  <p-card [style]="{'width': '100%'}" styleClass="p-card-shadow p-shadow-3" [style]="{'cursor': 'pointer'}" routerLink="/kategori/detay/{{kategori.adi}}">
+                    <ng-template pTemplate="header">
+                      <img alt="Card" *ngIf="kategori.adi=='Kültür'"  src="https://cdn-images-1.medium.com/fit/c/280/180/1*Cbj_BcK5ePD4Mc4TK4sfvQ@2x.jpeg" height="auto" width="100%">
+                          <img alt="Card" *ngIf="kategori.adi=='Sanat ve Eğlence'"  src="https://cdn-images-1.medium.com/fit/c/280/180/1*kA7YuTntJ95Nr4pBagdIzA@2x.jpeg" height="auto" width="100%">
+                          <img alt="Card" *ngIf="kategori.adi=='Bilim'"  src="https://cdn-images-1.medium.com/fit/c/280/180/1*W6hKe4kn1kX024wHQCgzHw@2x.jpeg" height="auto" width="100%">
+                          <img alt="Card" *ngIf="kategori.adi=='Sağlık'"  src="https://cdn-images-1.medium.com/fit/c/280/180/1*sKDeWyBuNWLWEVYNa7iEEw@2x.jpeg" height="auto" width="100%">
+                          <img alt="Card" *ngIf="kategori.adi=='Programlama'"  src="https://cdn-images-1.medium.com/fit/c/280/180/1*NHWOEki_ncCX-xzbKtkEWw@2x.jpeg" height="auto" width="100%">
+                          <img alt="Card" *ngIf="kategori.adi=='Kişisel Gelişim'"  src="https://cdn-images-1.medium.com/fit/c/280/180/1*Kl2y0nUvCgWSE8Qv0Et84Q@2x.jpeg" height="auto" width="100%">
+                          <img alt="Card" *ngIf="kategori.adi=='Toplum'" src="https://cdn-images-1.medium.com/fit/c/280/180/1*848VzYRpJ5cIQ0THiwAb6w@2x.jpeg" height="auto" width="100%">
+                          <img alt="Card" *ngIf="kategori.adi=='Teknoloji'" src="https://cdn-images-1.medium.com/fit/c/280/180/1*XxQLrxqHUlIHg5j-eIQrPQ@2x.png" height="auto" width="100%">
+                          <img alt="Card" *ngIf="kategori.adi=='Siyaset'" src="https://cdn-images-1.medium.com/fit/c/280/180/1*dYxAZd6BdDmmzFQDUrjAiA@2x.jpeg" height="auto" width="100%">
+                    </ng-template>
+                      <div class="p-d-flex p-jc-center">
+                       <strong style="font-size: large;"> {{kategori.adi}}</strong>
+                      </div>
+                  </p-card>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>

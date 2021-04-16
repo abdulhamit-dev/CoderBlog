@@ -36,14 +36,14 @@ export class MenubarComponent implements OnInit {
   MenuDataLoad() {
     this.items = [
       {
-        label: '',
+        label: 'CoderBlog',
         icon: 'pi pi-fw pi-home',
-        routerLink: 'home',
+        routerLink: 'home'
       },
       {
         label: 'Kategoriler',
         icon: 'pi pi-fw pi-ellipsis-h',
-        routerLink: 'home',
+        routerLink: 'kategori',
       },
       {
         label: 'Yazı',

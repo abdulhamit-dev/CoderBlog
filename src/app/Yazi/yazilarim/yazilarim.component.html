@@ -7,7 +7,7 @@
             </ng-template>
             <!-- {{yazi.yaziIcerik}} -->
             <ng-template pTemplate="footer">
-                <p-button label="Düzenle" (click)="DuzenleModal(yazi.id,yazi.kategoriId)" icon="pi pi-check"></p-button>
+                <p-button label="Düzenle" (click)="DuzenleModal(yazi.id,yazi.kategoriId)" icon="pi pi-pencil"></p-button>
             </ng-template>
         </p-card>
     </div>
@@ -35,23 +35,24 @@
         <div class="p-field">
             <div class="p-grid">
                 <div class="p-col-12 p-md-12">
-                    Değiştirmek için resmi seçiniz : <input pInputText type="file" #file placeholder="Yazi için bir resim seçiniz" 
+                    Değiştirmek için resmi seçiniz : <input pInputText type="file" #file placeholder="Yazi için bir resim seçiniz"
                         (change)="ResimGor($event)">
                 </div>
             </div>
         </div>
-      
+
         <div class="p-field">
             <p-editor [(ngModel)]="yazi.yaziIcerik" [style]="{'height':'320px'}"></p-editor>
         </div>
-        
+
         <div class="p-field">
-            <p-button label="Kaydet" (click)="YaziDuzenle()" [style]="{'width': '120px'}"></p-button>
+            <p-button label="Kaydet" (click)="YaziDuzenle()" icon="pi pi-check"  [style]="{'width': '120px'}"></p-button>
         </div>
     </div>
 
 
     <ng-template pTemplate="footer">
-        <p-button icon="pi pi-close" (click)="modalDurumu=false" label="Kapat" styleClass="p-button-text"></p-button>
+        <p-button label="Kaydet" (click)="YaziDuzenle()" icon="pi pi-check"  [style]="{'width': '120px'}"></p-button>
+        <button pButton pRipple type="button" (click)="modalDurumu=false" label="Kapat" class="p-button-danger" icon="pi pi-times"></button>
     </ng-template>
 </p-dialog>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Kategori } from 'src/app/models/yazi/kategori';
+import { Kategori } from 'src/app/models/kategori/kategori';
 import { Yazi } from 'src/app/models/yazi/yazi';
-import { KategoriService } from 'src/app/services/yazi/kategori.service';
+import { KategoriService } from 'src/app/services/kategori/kategori.service';
 import { YaziService } from 'src/app/services/yazi/yazi.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class YazilarimComponent implements OnInit {
   yazi: Yazi = new Yazi();
   kategori: Kategori = new Kategori();
   kategoriList: Kategori[] = [];
-  
+
   yaziKapakResmi: File;
   resim: string="";
   ngOnInit(): void {
@@ -32,7 +32,7 @@ export class YazilarimComponent implements OnInit {
       this.kategoriList = rv;
     });
 
-   
+
   }
 
   DuzenleModal(yaziId: number, kategoriId: number) {
@@ -50,13 +50,13 @@ export class YazilarimComponent implements OnInit {
     // });
 
     this.yaziService.YaziEkle(this.yazi,this.yaziKapakResmi).subscribe(rv => {
-      
+
     })
 
     this.modalDurumu = false;
   }
 
-  
+
   ResimGor(event: any) {
     this.yaziKapakResmi = <File>event.target.files[0];
     if (event.target.files && event.target.files[0]) {

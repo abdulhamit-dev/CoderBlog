@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Kategori } from 'src/app/models/yazi/kategori';
+import { Kategori } from 'src/app/models/kategori/kategori';
 import { PublicService } from '../public.service';
 
 @Injectable({
@@ -9,9 +9,9 @@ import { PublicService } from '../public.service';
 })
 export class KategoriService extends PublicService {
 
-  constructor(http: HttpClient) { super(http) }
-
-  KategoriListesi(): Observable<Kategori[]> {
-    return this.http.get<Kategori[]>(this.baseUrl + "kategori/getlist");
+  constructor(http:HttpClient) {super(http) }
+  KategoriListesi():Observable<Kategori[]>{
+    return this.http.get<Kategori[]>(this.baseUrl+"kategori/getlist");
   }
+
 }

@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { YaziDto } from 'src/app/models/Dtos/yazi/YaziDto';
 import { YorumDto } from 'src/app/models/Dtos/yazi/YorumDto';
 import { Begeni } from 'src/app/models/yazi/begeni';
-import { Yazi } from 'src/app/models/yazi/yazi';
 import { Yorum } from 'src/app/models/yazi/yorum';
 import { YaziService } from 'src/app/services/yazi/yazi.service';
 

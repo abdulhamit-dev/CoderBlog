@@ -24,6 +24,7 @@ import { YaziModule } from './yazi/yazi.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { KullaniciModule } from './kullanici/kullanici.module';
+import { KategoriModule } from './kategori/kategori.module';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -43,6 +44,7 @@ export function tokenGetter() {
     AppRoutingModule,
     YaziModule,
     KullaniciModule,
+    KategoriModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,

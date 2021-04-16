@@ -1,8 +1,8 @@
 import { HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Kategori } from 'src/app/models/yazi/kategori';
+import { Kategori } from 'src/app/models/kategori/kategori';
 import { Yazi } from 'src/app/models/yazi/yazi';
-import { KategoriService } from 'src/app/services/yazi/kategori.service';
+import { KategoriService } from 'src/app/services/kategori/kategori.service';
 import { YaziService } from 'src/app/services/yazi/yazi.service';
 
 @Component({
@@ -40,7 +40,7 @@ export class YeniYaziComponent implements OnInit {
   YaziKaydet() {
     this.yazi.kategoriId=this.kategori.id;
     this.yaziService.YaziEkle(this.yazi,this.yaziKapakResmi).subscribe(rv => {
-      
+
     })
   }
 
