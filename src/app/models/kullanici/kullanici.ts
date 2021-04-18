@@ -6,4 +6,5 @@ export class Kullanici {
     sifre: string
     eposta: string
     kayitTarihi: Date
+    resim:string=""
 }

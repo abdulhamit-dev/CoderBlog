@@ -37,6 +37,7 @@ export class YeniYaziComponent implements OnInit {
     }
   }
 
+
   YaziKaydet() {
     this.yazi.kategoriId=this.kategori.id;
     this.yaziService.YaziEkle(this.yazi,this.yaziKapakResmi).subscribe(rv => {

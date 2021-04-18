@@ -23,4 +23,14 @@ export class KullaniciService extends PublicService {
   KullaniciGetir():Observable<any>{
     return this.http.get<Kullanici>(this.baseUrl+'kullanici/get?id='+this.kullanici.id)
   }
+
+  KullaniciDuzenleV2(kul: Kullanici, kulResim: File): Observable<any> {
+
+    const formData = new FormData();
+
+    formData.append('kullanici', JSON.stringify(kul));
+    formData.append('kullaniciResmi', kulResim);
+
+    return this.http.post<Kullanici>(this.baseUrl + 'kullanici/Duzenle', formData);
+  }
 }
