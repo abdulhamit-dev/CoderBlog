@@ -12,7 +12,7 @@
                 <div class="p-col-12 p-lg-3 p-md-4  p-sm-6" *ngFor="let yazi of yaziListYeniler">
                     <p-card [style]="{'width': '100%'}" styleClass="p-card-shadow p-shadow-3">
                         <ng-template pTemplate="header">
-                            <img alt="Card" *ngIf="yazi.yaziKapakResim!=null"
+                            <img alt="Card" *ngIf="yazi.yaziKapakResim!=null" style="border-top-left-radius: 1%;border-top-right-radius: 1%;"
                                 src="assets/yaziKapakResim/{{yazi.yaziKapakResim}}" height="auto" width="100%">
                         </ng-template>
 
@@ -21,6 +21,8 @@
                             <span [routerLink]="['/yazi/detay/'+yazi.id]"
                             style="cursor: pointer;font-size: large;float: right;"><b>{{yazi.kategoriAdi}}</b></span>
                         <br>
+                        <img src="assets/profilResmi/{{yazi.kullaniciResmi}}" width="20" height="20" style="border-radius: 50%;">
+                        <!-- <p-chip label="User" image="assets/profilResmi/{{yazi.kullaniciResmi}}" styleClass="p-mr-2"></p-chip> -->
                         <ng-template pTemplate="footer">
                             {{yazi.kullaniciAdi}}
                             <i class="fas fa-heart" style="font-size: 1rem;margin-right: 10px;margin-left: 10px;">

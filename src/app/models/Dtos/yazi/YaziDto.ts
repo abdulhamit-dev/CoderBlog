@@ -3,6 +3,7 @@ export class YaziDto {
     kategoriId: number
     kategoriAdi:string
     kullaniciAdi: string
+    kullaniciResmi:string
     yaziBaslik: string
     yaziIcerik: string
     yaziTarih: Date
