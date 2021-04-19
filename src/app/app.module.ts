@@ -14,7 +14,9 @@ import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { BadgeModule } from 'primeng/badge';
 import { TabViewModule } from 'primeng/tabview';
-//import { ChipModule } from 'primeng/chip';
+import { ChipModule } from 'primeng/chip';
+import {AvatarModule} from 'primeng/avatar';
+import {AvatarGroupModule} from 'primeng/avatargroup';
 
 import { MenubarComponent } from './menubar/menubar.component';
 import { HomeComponent } from './home/home.component';
@@ -58,8 +60,9 @@ export function tokenGetter() {
     DividerModule,
     BadgeModule,
     TabViewModule,
-    //ChipModule,
-
+    ChipModule,
+    AvatarModule,
+    AvatarGroupModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

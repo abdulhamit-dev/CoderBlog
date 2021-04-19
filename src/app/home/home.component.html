@@ -1,41 +1,52 @@
 <br>
 <div class="p-grid">
-    <div class="p-col-12 p-sm-12 p-lg-12 p-md-12 ">
-        <p-divider align="left" type="dashed">
-            <div class="p-d-inline-flex p-ai-center">
-                <i class="far fa-newspaper p-mr-2" style="font-size: x-large;color: green;"></i>
-                <b>Yeniler</b>
+  <div class="p-col-12 p-sm-12 p-lg-12 p-md-12 ">
+    <p-divider align="left" type="dashed">
+      <div class="p-d-inline-flex p-ai-center">
+        <i class="far fa-newspaper p-mr-2" style="font-size: x-large;color: green;"></i>
+        <b>Yeniler</b>
+      </div>
+    </p-divider>
+    <div header="Yeni Yazılar">
+      <div class="p-grid">
+        <div class="p-col-12 p-lg-3 p-md-4  p-sm-6" *ngFor="let yazi of yaziListYeniler">
+          <p-card [style]="{'width': '100%'}" styleClass="p-card-shadow p-shadow-2">
+            <div class="p-d-flex p-jc-center">
+              <span [routerLink]="['/yazi/detay/'+yazi.id]"
+                style="cursor: pointer;font-size: large; float: right;color: #3F51B5;"><b>{{yazi.kategoriAdi}}</b></span>
             </div>
-        </p-divider>
-        <div header="Yeni Yazılar">
-            <div class="p-grid">
-                <div class="p-col-12 p-lg-3 p-md-4  p-sm-6" *ngFor="let yazi of yaziListYeniler">
-                    <p-card [style]="{'width': '100%'}" styleClass="p-card-shadow p-shadow-3">
-                        <ng-template pTemplate="header">
-                            <img alt="Card" *ngIf="yazi.yaziKapakResim!=null" style="border-top-left-radius: 1%;border-top-right-radius: 1%;"
-                                src="assets/yaziKapakResim/{{yazi.yaziKapakResim}}" height="auto" width="100%">
-                        </ng-template>
+            <p-divider></p-divider>
+            <p-chip *ngIf="yazi.kullaniciResmi!=null" label="{{yazi.kullaniciAdi}}"
+              image="assets/profilResmi/{{yazi.kullaniciResmi}}" styleClass="p-mr-2"></p-chip>
+            <p-chip *ngIf="yazi.kullaniciResmi==null" label="{{yazi.kullaniciAdi}}"
+              image="assets/profilResmi/nouser.png" styleClass="p-mr-5"></p-chip>
+            <span style="float: right;"><strong>{{yazi.yaziTarih | date:"dd.MM hh:mm" }}</strong></span>
+            <img alt="Card" *ngIf="yazi.yaziKapakResim!=null"
+              style="border-radius: 1%"
+              src="assets/yaziKapakResim/{{yazi.yaziKapakResim}}" height="auto" width="100%">
+            <br>
+            <span [routerLink]="['/yazi/detay/'+yazi.id]"
+              style="cursor: pointer;font-size: large;"><b>{{yazi.yaziBaslik}}</b></span>
+            <br>
+            <p-divider></p-divider>
+            <ng-template pTemplate="footer">
 
-                        <span [routerLink]="['/yazi/detay/'+yazi.id]"
-                            style="cursor: pointer;font-size: large;"><b>{{yazi.yaziBaslik}}</b></span>
-                            <span [routerLink]="['/yazi/detay/'+yazi.id]"
-                            style="cursor: pointer;font-size: large;float: right;"><b>{{yazi.kategoriAdi}}</b></span>
-                        <br>
-                        <img src="assets/profilResmi/{{yazi.kullaniciResmi}}" width="20" height="20" style="border-radius: 50%;">
-                        <!-- <p-chip label="User" image="assets/profilResmi/{{yazi.kullaniciResmi}}" styleClass="p-mr-2"></p-chip> -->
-                        <ng-template pTemplate="footer">
-                            {{yazi.kullaniciAdi}}
-                            <i class="fas fa-heart" style="font-size: 1rem;margin-right: 10px;margin-left: 10px;">
-                                {{yazi.begeniSayisi}}</i>
-                            <i class="fas fa-comments" style="font-size: 1rem"> {{yazi.yorumSayisi}}</i>
-                            <span style="float: right;">{{yazi.yaziTarih | date:"dd.MM.yyyy" }}</span>
-                        </ng-template>
-                    </p-card>
-                </div>
-            </div>
+
+              <p-avatar pBadge value="{{yazi.begeniSayisi}}" image="assets/like.png" severity="danger"
+                styleClass="p-mr-5"></p-avatar>
+              <p-avatar image="assets/comment.png" pBadge value="{{yazi.yorumSayisi}}" severity="primary"
+                styleClass="p-mr-5"></p-avatar>
+
+              <p-avatar image="assets/view.png" pBadge value="{{yazi.yorumSayisi}}" severity="warning"
+              styleClass="p-mr-3" [style]="{'float': 'right'}"></p-avatar>
+              <!-- <span style="float: right;">{{yazi.yaziTarih | date:"dd.MM.yyyy" }}</span> -->
+            </ng-template>
+          </p-card>
         </div>
+      </div>
     </div>
-    <!-- <div class="p-col-12 p-sm-12 p-lg-3 p-md-12 ">
+  </div>
+  <!-- <div class="p-col-12 p-sm-12 p-lg-3 p-md-12 ">
         <div class="p-grid">
             <div class="p-col-6 p-sm-6 p-lg-12 p-md-12 ">
                 <p-divider align="left" type="dashed">
@@ -50,28 +61,47 @@
     </div> -->
 </div>
 <p-divider align="left" type="dashed">
-    <div class="p-d-inline-flex p-ai-center">
-        <i class="fa fa-angle-double-up p-mr-2" style="font-size: x-large;color: orange;"></i>
-        <b>Trendler</b>
-    </div>
+  <div class="p-d-inline-flex p-ai-center">
+    <i class="fa fa-angle-double-up p-mr-2" style="font-size: x-large;color: orange;"></i>
+    <b>Trendler</b>
+  </div>
 </p-divider>
 <div class="p-grid">
-    <div class="p-col-12 p-lg-3 p-md-4  p-sm-6" *ngFor="let yazi of yaziListTrend">
-        <p-card header="{{yazi.yaziBaslik}}" [style]="{'width': '100%','cursor':'pointer'}"
-            styleClass="p-card-shadow p-shadow-3" [routerLink]="['/yazi/detay/'+yazi.id]">
-            <ng-template pTemplate="header">
-                <img alt="Card" *ngIf="yazi.yaziKapakResim!=null" src="assets/yaziKapakResim/{{yazi.yaziKapakResim}}"
-                    height="auto" width="100%">
-            </ng-template>
-            <!-- {{(yazi.yaziIcerik.length>70)?yazi.yaziIcerik.substring(0,70)+"...":yazi.yaziIcerik}}
-            <br *ngIf="yazi.yaziIcerik.length<70">
-            <br *ngIf="yazi.yaziIcerik.length<70"> -->
-            <ng-template pTemplate="footer">
-                {{yazi.kullaniciAdi}} <span style="float: right;">{{yazi.yaziTarih | date:"dd.MM.yyyy"
-                    }}</span>
-            </ng-template>
-        </p-card>
-    </div>
+  <div class="p-col-12 p-lg-3 p-md-4  p-sm-6" *ngFor="let yazi of yaziListTrend;index as i">
+    <p-card [style]="{'width': '100%'}" styleClass="p-card-shadow p-shadow-2">
+
+      <span style="float: left;color:#3F51B5;"><strong> {{i+1 | number}} - <i class="pi pi-chart-line"></i> </strong> </span>
+        <span [routerLink]="['/yazi/detay/'+yazi.id]"
+          style="cursor: pointer;font-size: large; float: right;color: #3F51B5;"><b>{{yazi.kategoriAdi}}</b></span>
+
+      <p-divider></p-divider>
+      <p-chip *ngIf="yazi.kullaniciResmi!=null" label="{{yazi.kullaniciAdi}}"
+        image="assets/profilResmi/{{yazi.kullaniciResmi}}" styleClass="p-mr-2"></p-chip>
+      <p-chip *ngIf="yazi.kullaniciResmi==null" label="{{yazi.kullaniciAdi}}"
+        image="assets/profilResmi/nouser.png" styleClass="p-mr-5"></p-chip>
+      <span style="float: right;"><strong>{{yazi.yaziTarih | date:"dd.MM hh:mm" }}</strong></span>
+      <img alt="Card" *ngIf="yazi.yaziKapakResim!=null"
+      style="border-radius: 1%"
+        src="assets/yaziKapakResim/{{yazi.yaziKapakResim}}" height="auto" width="100%">
+      <br>
+      <span [routerLink]="['/yazi/detay/'+yazi.id]"
+        style="cursor: pointer;font-size: large;"><b>{{yazi.yaziBaslik}}</b></span>
+      <br>
+      <p-divider></p-divider>
+      <ng-template pTemplate="footer">
+
+
+        <p-avatar pBadge value="{{yazi.begeniSayisi}}" image="assets/like.png" severity="danger"
+          styleClass="p-mr-5"></p-avatar>
+        <p-avatar image="assets/comment.png" pBadge value="{{yazi.yorumSayisi}}" severity="primary"
+          styleClass="p-mr-5"></p-avatar>
+
+        <p-avatar image="assets/view.png" pBadge value="{{yazi.yorumSayisi}}" severity="warning"
+          styleClass="p-mr-3" [style]="{'float': 'right'}"></p-avatar>
+        <!-- <span style="float: right;">{{yazi.yaziTarih | date:"dd.MM.yyyy" }}</span> -->
+      </ng-template>
+    </p-card>
+  </div>
 </div>
 <!-- <div class="p-grid">
     <div class="p-col-12 p-sm-12 p-lg-12 p-md-12 ">
