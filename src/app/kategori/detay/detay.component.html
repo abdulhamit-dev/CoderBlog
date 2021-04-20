@@ -1,2 +1,29 @@
-<p>detay {{sonuc}}</p>
+<br>
+      <div class="p-grid">
+        <div class="p-col-12 p-lg-3 p-md-4  p-sm-6" *ngFor="let yazi of yaziList">
+          <p-card [style]="{'width': '100%','cursor':'pointer'}" styleClass="p-card-shadow p-shadow-2" [routerLink]="['/yazi/detay/'+yazi.id]">
+            <!-- <ng-template pTemplate="header">
+              <img alt="Card" *ngIf="yazi.yaziKapakResim!=null"
+              style="border-radius: 1%"
+              src="assets/yaziKapakResim/{{yazi.yaziKapakResim}}" height="auto" width="100%">
+            </ng-template> -->
+
+                <p-chip *ngIf="yazi.kullaniciResmi!=null" label="{{yazi.kullaniciAdi}}"
+                image="assets/profilResmi/{{yazi.kullaniciResmi}}" styleClass="p-mr-2 custom-chip"></p-chip>
+                <p-chip *ngIf="yazi.kullaniciResmi==null" label="{{yazi.kullaniciAdi}}"
+                image="assets/profilResmi/nouser.png" styleClass="p-mr-5 custom-chip"></p-chip>
+                <br>
+                <br>
+                <span style="cursor: pointer;font-size: large;"><b>{{yazi.yaziBaslik}}</b></span>
+                <p-divider></p-divider>
+
+                <img src="assets/like.png" style="width: 15px;height: 15px;" ><strong class="p-mr-3"> {{yazi.begeniSayisi}}</strong>
+                <img src="assets/comment.png" style="width: 15px;height: 15px;" ><strong> {{yazi.yorumSayisi}}</strong>
+                <span style="float: right;"><strong>{{yazi.yaziTarih | date:"dd.MM hh:mm" }}</strong></span>
+
+
+
+
+          </p-card>
+        </div>
 

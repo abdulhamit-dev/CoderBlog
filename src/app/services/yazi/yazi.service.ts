@@ -34,7 +34,7 @@ export class YaziService extends PublicService {
     yazi.kullaniciId = this.kullanici.id;
     yazi.yaziTarih = new Date();
     console.log(JSON.stringify(yazi))
-    
+
     formData.append('yazi', JSON.stringify(yazi));
     formData.append('yaziKapakResim', yaziKapakResmi);
 
@@ -59,11 +59,11 @@ export class YaziService extends PublicService {
     );
   }
 
-  YaziListesiKategori(kategoriId: number): Observable<Yazi[]> {
-    return this.http.get<Yazi[]>(
-      this.baseUrl + 'yazi/getlistfilter?kullaniciId=0&kategoriId=' + kategoriId
-    );
-  }
+  // YaziListesiKategori(kategoriId: number): Observable<Yazi[]> {
+  //   return this.http.get<Yazi[]>(
+  //     this.baseUrl + 'yazi/getlistfilter?kullaniciId=0&kategoriId=' + kategoriId
+  //   );
+  // }
 
   YaziListesiKullaniciKategori(kategoriId: number): Observable<Yazi[]> {
     return this.http.get<Yazi[]>(
@@ -91,6 +91,10 @@ export class YaziService extends PublicService {
         Authorization: 'Bearer ' + localStorage.getItem('jwt'),
       }),
     });
+  }
+
+  YaziListesiKategori(kategoriAdi:string): Observable<any> {
+    return this.http.get<YaziDto>(this.baseUrl + 'yazi/getlistkategoriyazi?kategoriAdi='+kategoriAdi);
   }
 
   YaziYorumlari(id: number): Observable<any> {

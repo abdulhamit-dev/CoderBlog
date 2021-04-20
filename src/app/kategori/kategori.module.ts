@@ -4,6 +4,13 @@ import { KategoriRoutingModule } from './kategori-routing.module';
 import { KategoriComponent } from './kategori.component';
 import { DetayComponent } from './detay/detay.component';
 
+import { DividerModule } from 'primeng/divider';
+import { BadgeModule } from 'primeng/badge';
+import { TabViewModule } from 'primeng/tabview';
+import { ChipModule } from 'primeng/chip';
+import {AvatarModule} from 'primeng/avatar';
+import {AvatarGroupModule} from 'primeng/avatargroup';
+
 import { CardModule } from 'primeng/card';
 
 @NgModule({
@@ -11,7 +18,13 @@ import { CardModule } from 'primeng/card';
   imports: [
     CommonModule,
     KategoriRoutingModule,
-    CardModule
+    CardModule,
+    DividerModule,
+    BadgeModule,
+    TabViewModule,
+    ChipModule,
+    AvatarModule,
+    AvatarGroupModule
   ]
 })
 export class KategoriModule { }
