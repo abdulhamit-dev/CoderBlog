@@ -22,6 +22,8 @@ import { DetayComponent } from './detay/detay.component';
 import { DividerModule } from 'primeng/divider';
 import { EditorModule } from 'primeng/editor';
 import { TabViewModule } from 'primeng/tabview';
+import {ConfirmPopupModule} from 'primeng/confirmpopup';
+import {ConfirmationService,MessageService} from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,9 @@ import { TabViewModule } from 'primeng/tabview';
     DividerModule,
     EditorModule,
     TabViewModule,
+    ConfirmPopupModule
+
   ],
+  providers:[ConfirmationService,MessageService]
 })
 export class YaziModule {}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Kategori } from 'src/app/models/kategori/kategori';
 import { Yazi } from 'src/app/models/yazi/yazi';
 import { KategoriService } from 'src/app/services/kategori/kategori.service';
@@ -12,7 +13,9 @@ import { YaziService } from 'src/app/services/yazi/yazi.service';
 export class YazilarimComponent implements OnInit {
   constructor(
     private yaziService: YaziService,
-    private kategoriService: KategoriService
+    private kategoriService: KategoriService,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService,
   ) {}
   modalDurumu: boolean = false;
   yaziList: Yazi[] = [];
@@ -66,5 +69,27 @@ export class YazilarimComponent implements OnInit {
       }
       reader.readAsDataURL(event.target.files[0]);
     }
+  }
+
+  Sil(event: Event) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: "Yazı silinsin mi?",
+      icon: "pi pi-exclamation-triangle",
+      accept: () => {
+        this.messageService.add({
+          severity: "info",
+          summary: "Confirmed",
+          detail: "You have accepted"
+        });
+      },
+      reject: () => {
+        this.messageService.add({
+          severity: "error",
+          summary: "Rejected",
+          detail: "You have rejected"
+        });
+      }
+    });
   }
 }

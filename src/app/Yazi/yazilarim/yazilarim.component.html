@@ -7,8 +7,8 @@
             </ng-template>
             <!-- {{yazi.yaziIcerik}} -->
             <ng-template pTemplate="footer">
-                <p-button label="Düzenle" (click)="DuzenleModal(yazi.id,yazi.kategoriId)" icon="pi pi-pencil"></p-button>
-                <p-button label="Sil" (click)="DuzenleModal(yazi.id,yazi.kategoriId)" icon="pi pi-pencil"></p-button>
+                <p-button label="Düzenle" (click)="DuzenleModal(yazi.id,yazi.kategoriId)" icon="pi pi-pencil" styleClass="p-mr-3" ></p-button>
+                <p-button label="Sil" (click)="Sil($event)" icon="pi pi-trash"></p-button>
             </ng-template>
         </p-card>
     </div>
@@ -57,3 +57,8 @@
         <button pButton pRipple type="button" (click)="modalDurumu=false" label="Kapat" class="p-button-danger" icon="pi pi-times"></button>
     </ng-template>
 </p-dialog>
+
+
+<!-- <p-toast></p-toast> -->
+
+<p-confirmPopup></p-confirmPopup>
