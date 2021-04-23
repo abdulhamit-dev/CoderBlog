@@ -24,6 +24,7 @@ import { EditorModule } from 'primeng/editor';
 import { TabViewModule } from 'primeng/tabview';
 import {ConfirmPopupModule} from 'primeng/confirmpopup';
 import {ConfirmationService,MessageService} from 'primeng/api';
+import { ToastModule } from "primeng/toast";
 
 @NgModule({
   declarations: [
@@ -51,7 +52,9 @@ import {ConfirmationService,MessageService} from 'primeng/api';
     DividerModule,
     EditorModule,
     TabViewModule,
-    ConfirmPopupModule
+    ConfirmPopupModule,
+    ToastModule
+
 
   ],
   providers:[ConfirmationService,MessageService]

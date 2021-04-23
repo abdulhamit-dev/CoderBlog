@@ -26,6 +26,7 @@ export class YazilarimComponent implements OnInit {
 
   yaziKapakResmi: File;
   resim: string="";
+
   ngOnInit(): void {
     this.yaziService.YaziListesiKullanici().subscribe((rv) => {
       this.yaziList = rv;
@@ -46,16 +47,9 @@ export class YazilarimComponent implements OnInit {
 
   YaziDuzenle() {
     this.yazi.kategoriId = this.kategori.id;
-    // this.yaziService.YaziDuzenle(this.yazi).subscribe((x) => {
-    //   if (!x) {
-    //     alert('Kayıt Başarısız');
-    //   }
-    // });
-
     this.yaziService.YaziEkle(this.yazi,this.yaziKapakResmi).subscribe(rv => {
 
     })
-
     this.modalDurumu = false;
   }
 
@@ -71,24 +65,39 @@ export class YazilarimComponent implements OnInit {
     }
   }
 
-  Sil(event: Event) {
+  Sil(event: Event,seciliYazi:Yazi) {
     this.confirmationService.confirm({
       target: event.target as EventTarget,
       message: "Yazı silinsin mi?",
       icon: "pi pi-exclamation-triangle",
       accept: () => {
-        this.messageService.add({
-          severity: "info",
-          summary: "Confirmed",
-          detail: "You have accepted"
-        });
+        this.yaziService.YaziSil(seciliYazi).subscribe(rv=>{
+          if(rv){
+            this.yaziList=rv;
+            console.log(rv);
+            this.messageService.add({
+
+              severity: "success",
+              summary: "Başarılı",
+              detail: "Yazı Silindi",
+            });
+          }else{
+            this.messageService.add({
+
+              severity: "error",
+              summary: "Hata",
+              detail: "Yazı Silinemedi",
+            });
+          }
+        })
+
       },
       reject: () => {
-        this.messageService.add({
-          severity: "error",
-          summary: "Rejected",
-          detail: "You have rejected"
-        });
+        // this.messageService.add({
+        //   severity: "error",
+        //   summary: "Vazgeçildi",
+        //   detail: "You have rejected"
+        // });
       }
     });
   }
