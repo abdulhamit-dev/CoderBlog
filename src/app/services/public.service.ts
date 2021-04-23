@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class PublicService {
   baseUrl: string = 'https://localhost:44351/api/';
-  constructor(public http:HttpClient) { 
-    
+   //baseUrl: string = 'https://api.yilmazcoder.online/api/';
+  constructor(public http:HttpClient) {
+
   }
 }

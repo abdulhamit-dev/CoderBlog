@@ -3,11 +3,12 @@
     <div class="p-col-12 p-lg-3 p-md-4  p-sm-6" *ngFor="let yazi of yaziList">
         <p-card header="{{yazi.yaziBaslik}}" [style]="{'width': '100%'}" styleClass="p-card-shadow">
             <ng-template pTemplate="header">
-                <img alt="Card"  *ngIf="yazi.yaziKapakResim!=null" src="assets/yaziKapakResim/{{yazi.yaziKapakResim}}" height="auto" width="100%">
+                <img alt="Card"  *ngIf="yazi.yaziKapakResim!=null" src="https://api.yilmazcoder.online/resources/yazikapakresim/{{yazi.yaziKapakResim}}" height="auto" width="100%">
             </ng-template>
             <!-- {{yazi.yaziIcerik}} -->
             <ng-template pTemplate="footer">
                 <p-button label="Düzenle" (click)="DuzenleModal(yazi.id,yazi.kategoriId)" icon="pi pi-pencil"></p-button>
+                <p-button label="Sil" (click)="DuzenleModal(yazi.id,yazi.kategoriId)" icon="pi pi-pencil"></p-button>
             </ng-template>
         </p-card>
     </div>
@@ -28,7 +29,7 @@
                 <div class="p-col-12 p-md-12">
                     Kapak Resminiz:
                     <img *ngIf="resim.length>0" src="{{resim}}" style="width: 30%;height: auto;" />
-                    <img *ngIf="resim.length<=0" src="assets/yaziKapakResim/{{yazi.yaziKapakResim}}" style="width: 30%;height: auto;" />
+                    <img *ngIf="resim.length<=0" src="https://api.yilmazcoder.online/resources/yazikapakresim/{{yazi.yaziKapakResim}}" style="width: 30%;height: auto;" />
                 </div>
             </div>
         </div>
@@ -45,9 +46,9 @@
             <p-editor [(ngModel)]="yazi.yaziIcerik" [style]="{'height':'320px'}"></p-editor>
         </div>
 
-        <div class="p-field">
+        <!-- <div class="p-field">
             <p-button label="Kaydet" (click)="YaziDuzenle()" icon="pi pi-check"  [style]="{'width': '120px'}"></p-button>
-        </div>
+        </div> -->
     </div>
 
 

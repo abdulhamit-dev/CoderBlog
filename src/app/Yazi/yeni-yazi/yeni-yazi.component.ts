@@ -1,5 +1,6 @@
 import { HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Kategori } from 'src/app/models/kategori/kategori';
 import { Yazi } from 'src/app/models/yazi/yazi';
 import { KategoriService } from 'src/app/services/kategori/kategori.service';
@@ -12,7 +13,7 @@ import { YaziService } from 'src/app/services/yazi/yazi.service';
 })
 export class YeniYaziComponent implements OnInit {
 
-  constructor(private yaziService: YaziService, private kategoriService: KategoriService) { }
+  constructor(private yaziService: YaziService, private kategoriService: KategoriService,private route:Router) { }
   yazi: Yazi = new Yazi()
   kategori: Kategori = new Kategori();
   kategoriList: Kategori[] = [];
@@ -41,7 +42,11 @@ export class YeniYaziComponent implements OnInit {
   YaziKaydet() {
     this.yazi.kategoriId=this.kategori.id;
     this.yaziService.YaziEkle(this.yazi,this.yaziKapakResmi).subscribe(rv => {
-
+     if(rv){
+       this.route.navigateByUrl("/yazi/yazilarim")
+     }else{
+       alert("Hata:"+rv)
+     }
     })
   }
 
