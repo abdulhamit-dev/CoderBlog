@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { YaziDto } from 'src/app/models/Dtos/yazi/YaziDto';
+import { YaziFormFileDto } from 'src/app/models/Dtos/yazi/YaziFormFileDto';
+import { YaziPostDto } from 'src/app/models/Dtos/yazi/YaziPostDto';
 import { YorumDto } from 'src/app/models/Dtos/yazi/YorumDto';
 import { Kullanici } from 'src/app/models/kullanici/kullanici';
 import { Begeni } from 'src/app/models/yazi/begeni';
@@ -28,18 +30,32 @@ export class YaziService extends PublicService {
     });
   }
 
-  YaziEkle(yazi: Yazi, yaziKapakResmi: File): Observable<any> {
+  YaziEkle(yazi: Yazi,yaziBase64:string): Observable<any> {
 
-    const formData = new FormData();
+    var yaziPostDto:YaziPostDto=new YaziPostDto();
     yazi.kullaniciId = this.kullanici.id;
     yazi.yaziTarih = new Date();
-    console.log(JSON.stringify(yazi))
+    yaziPostDto.yazi=JSON.stringify(yazi);
+    yaziPostDto.yaziBase64=yaziBase64;
 
-    formData.append('yazi', JSON.stringify(yazi));
-    formData.append('yaziKapakResim', yaziKapakResmi);
 
-    return this.http.post<Yazi>(this.baseUrl + 'yazi/YaziKaydet', formData);
+
+    return this.http.post<Yazi>(this.baseUrl + 'yazi/YaziKaydet', yaziPostDto);
   }
+  //  Bu metod fileupload ile dosya upload ederken kullandığım metod du amacım post ederken file dosyasınıda post etmek
+  // YaziEkle(yazi: Yazi,yaziBase64:string, yaziKapakResmi: File): Observable<any> {
+
+  //   const formData = new FormData();
+  //   yazi.kullaniciId = this.kullanici.id;
+  //   yazi.yaziTarih = new Date();
+  //   console.log(JSON.stringify(yazi))
+
+  //   formData.append('yazi', JSON.stringify(yazi));
+  //   formData.append('yaziBase64', yaziBase64);
+  //   formData.append('yaziKapakResim', yaziKapakResmi);
+
+  //   return this.http.post<Yazi>(this.baseUrl + 'yazi/YaziKaydet', formData);
+  // }
 
   YaziDuzenle(yazi: Yazi): Observable<any> {
     yazi.kullaniciId = this.kullanici.id;
@@ -58,12 +74,6 @@ export class YaziService extends PublicService {
       '&kategoriId=0'
     );
   }
-
-  // YaziListesiKategori(kategoriId: number): Observable<Yazi[]> {
-  //   return this.http.get<Yazi[]>(
-  //     this.baseUrl + 'yazi/getlistfilter?kullaniciId=0&kategoriId=' + kategoriId
-  //   );
-  // }
 
   YaziListesiKullaniciKategori(kategoriId: number): Observable<Yazi[]> {
     return this.http.get<Yazi[]>(

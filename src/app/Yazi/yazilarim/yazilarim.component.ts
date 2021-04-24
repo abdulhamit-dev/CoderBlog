@@ -47,7 +47,7 @@ export class YazilarimComponent implements OnInit {
 
   YaziDuzenle() {
     this.yazi.kategoriId = this.kategori.id;
-    this.yaziService.YaziEkle(this.yazi,this.yaziKapakResmi).subscribe(rv => {
+    this.yaziService.YaziEkle(this.yazi,"").subscribe(rv => {
 
     })
     this.modalDurumu = false;

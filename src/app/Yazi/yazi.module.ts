@@ -26,6 +26,8 @@ import {ConfirmPopupModule} from 'primeng/confirmpopup';
 import {ConfirmationService,MessageService} from 'primeng/api';
 import { ToastModule } from "primeng/toast";
 
+import { ImageCropperModule } from 'ngx-image-cropper';
+
 @NgModule({
   declarations: [
     YeniYaziComponent,
@@ -53,7 +55,9 @@ import { ToastModule } from "primeng/toast";
     EditorModule,
     TabViewModule,
     ConfirmPopupModule,
-    ToastModule
+    ToastModule,
+    ImageCropperModule
+
 
 
   ],

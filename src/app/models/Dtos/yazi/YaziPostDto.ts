@@ -1,7 +1,6 @@
 import { Yazi } from "../../yazi/yazi";
 
-export class YaziFormFileDto {
+export class YaziPostDto {
     yazi: string
     yaziBase64:string
-    yaziKapakResim: File
 }

@@ -31,7 +31,7 @@
             <label for="txtFile">Profil Resmi(değiştirmek için aşağıdan dosya seç ile yapılabilir)</label>
             <br>
             <img *ngIf="resim.length>0" src="{{resim}}" style="width: 30%;height: auto;" />
-            <img *ngIf="resim.length<=0" src="assets/profilResmi/{{kullanici.resim}}" style="width: 30%;height: auto;" />
+            <img *ngIf="resim.length<=0" src="https://api.yilmazcoder.online/resources/profilResmi/{{kullanici.resim}}" style="width: 30%;height: auto;" />
             <br>
               <input pInputText id="txtFile" type="file" #file placeholder="Yazi için bir resim seçiniz"   (change)="ResimGor($event)">
 

@@ -1,45 +1,47 @@
 <div class="p-grid" style="margin-top: 50px;">
-    <div class="p-md-2 p-sm-12">
-        <div class="box"></div>
-    </div>
-    <div class="p-md-8 p-sm-12">
-        <div class="box">
-            <p-card header="Yazi Oluştur">
-                <div class="p-fluid p-formgrid">
-                    <div class="p-field">
-                        <p-dropdown [options]="kategoriList" [(ngModel)]="kategori" optionLabel="adi"
-                            placeholder="Kategori"></p-dropdown>
-                    </div>
-                    <div class="p-field">
-                        <input type="text" id="txtbaslik" placeholder="Başlık" pInputText [(ngModel)]="yazi.yaziBaslik">
+  <div class="p-md-1 p-sm-12">
+    <div class="box"></div>
+  </div>
+  <div class="p-md-10 p-sm-12">
+    <div class="box">
+      <p-card header="Yazi Oluştur">
+        <div class="p-fluid p-formgrid">
+          <div class="p-field">
+            <p-dropdown [options]="kategoriList" [(ngModel)]="kategori" optionLabel="adi" placeholder="Kategori">
+            </p-dropdown>
+          </div>
+          <div class="p-field">
+            <input type="text" id="txtbaslik" placeholder="Başlık" pInputText [(ngModel)]="yazi.yaziBaslik">
 
-                    </div>
-                    <div class="p-field">
-                        <div class="p-grid">
-                            <div class="p-col-12 p-md-3">
-                                Yazı İçin Resim Seçiniz
-                            </div>
-                            <div class="p-col-12 p-md-5">
-                                <input pInputText type="file" #fileuploader placeholder="Yazi için bir resim seçiniz"
-                                    (change)="ResimGor($event)">
-                            </div>
-                            <div class="p-col-12 p-md-4">
-                                <img [src]="resim" style="width: 100%;height: 150px;" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-field">
-                        <p-editor [(ngModel)]="yazi.yaziIcerik" [style]="{'height':'320px'}"></p-editor>
-                    </div>
-                    <div class="p-field">
-                        <p-button label="Kaydet" (click)="YaziKaydet()" [style]="{'width': '120px'}"></p-button>
-                    </div>
-                </div>
-            </p-card>
+          </div>
+          <div class="p-field">
+            <div class="p-grid">
+              <div class="p-col-12 p-md-3">
+                Yazı İçin Kapak Resmi Seçiniz(Kırpılı alan kaydedilecektir)
+              </div>
+              <div class="p-col-12 p-md-5">
+                <input type="file" (change)="FileChangeEvent($event)" #fileuploader />
+              </div>
+              <div class="p-col-12 p-md-8">
+                <image-cropper style="width: 768px;height: auto;" [imageChangedEvent]="imageChangedEvent"
+                    [aspectRatio]="4 / 3" [resizeToWidth]="512"
+                    [style.display]="showCropper ? null : 'none'" format="png" (imageCropped)="ImageCropped($event)"
+                    (imageLoaded)="ImageLoaded()"></image-cropper>
+              </div>
+            </div>
+          </div>
+          <div class="p-field">
+            <p-editor [(ngModel)]="yazi.yaziIcerik" [style]="{'height':'620px'}"></p-editor>
+          </div>
+          <div class="p-field">
+            <p-button label="Kaydet" (click)="YaziKaydet()" [style]="{'width': '120px'}"></p-button>
+          </div>
         </div>
+      </p-card>
     </div>
-    <div class="p-md-2 p-sm-12">
-        <div class="box"></div>
-    </div>
+  </div>
+  <div class="p-md-1 p-sm-12">
+    <div class="box"></div>
+  </div>
 </div>
 <p-toast></p-toast>
