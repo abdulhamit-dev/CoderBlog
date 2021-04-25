@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { base64ToFile } from 'ngx-image-cropper';
 import { Observable } from 'rxjs';
+import { KullaniciPostDto } from 'src/app/models/Dtos/kullanici/KullaniciPostDto';
 import { Kullanici } from 'src/app/models/kullanici/kullanici';
 import { LoginService } from '../auth/login.service';
 import { PublicService } from '../public.service';
@@ -17,20 +19,15 @@ export class KullaniciService extends PublicService {
     });
 
   }
-  KullaniciDuzenle(kul: Kullanici): Observable<any> {
-    return this.http.post<Kullanici>(this.baseUrl + 'kullanici/Kaydet', kul);
-  }
   KullaniciGetir():Observable<any>{
     return this.http.get<Kullanici>(this.baseUrl+'kullanici/get?id='+this.kullanici.id)
   }
 
-  KullaniciDuzenleV2(kul: Kullanici, kulResim: File): Observable<any> {
+  KullaniciDuzenle(kul: Kullanici,base64Image:string): Observable<any> {
+    var kulPost:KullaniciPostDto=new KullaniciPostDto();
+    kulPost.kullanici=JSON.stringify(kul)
+    kulPost.kulResimBase64=base64Image;
 
-    const formData = new FormData();
-
-    formData.append('kullanici', JSON.stringify(kul));
-    formData.append('kullaniciResmi', kulResim);
-
-    return this.http.post<Kullanici>(this.baseUrl + 'kullanici/Duzenle', formData);
+    return this.http.post<Kullanici>(this.baseUrl + 'kullanici/Duzenle',kulPost );
   }
 }

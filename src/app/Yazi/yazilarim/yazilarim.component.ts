@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ImageCroppedEvent, ImageTransform } from 'ngx-image-cropper';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Kategori } from 'src/app/models/kategori/kategori';
 import { Yazi } from 'src/app/models/yazi/yazi';
@@ -27,6 +28,10 @@ export class YazilarimComponent implements OnInit {
   yaziKapakResmi: File;
   resim: string="";
 
+  imageChangedEvent: any = '';
+  kirpilanResim: any = '';
+  showCropper = false;
+
   ngOnInit(): void {
     this.yaziService.YaziListesiKullanici().subscribe((rv) => {
       this.yaziList = rv;
@@ -47,7 +52,7 @@ export class YazilarimComponent implements OnInit {
 
   YaziDuzenle() {
     this.yazi.kategoriId = this.kategori.id;
-    this.yaziService.YaziEkle(this.yazi,"").subscribe(rv => {
+    this.yaziService.YaziEkle(this.yazi,this.kirpilanResim).subscribe(rv => {
 
     })
     this.modalDurumu = false;
@@ -100,5 +105,15 @@ export class YazilarimComponent implements OnInit {
         // });
       }
     });
+  }
+  FileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+  }
+  ImageCropped(event: ImageCroppedEvent) {
+    this.kirpilanResim = event.base64;
+  }
+
+  ImageLoaded() {
+    this.showCropper = true;
   }
 }

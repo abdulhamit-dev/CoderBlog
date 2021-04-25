@@ -10,6 +10,11 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
+import {ConfirmPopupModule} from 'primeng/confirmpopup';
+import {ConfirmationService,MessageService} from 'primeng/api';
+import { ToastModule } from "primeng/toast";
+
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [ProfilComponent, KullaniciComponent],
@@ -23,6 +28,10 @@ import { FormsModule } from '@angular/forms';
     InputTextModule,
     CardModule,
     DropdownModule,
+    ImageCropperModule,
+    ToastModule,
+    ConfirmPopupModule
   ],
+  providers:[ConfirmationService,MessageService]
 })
 export class KullaniciModule {}

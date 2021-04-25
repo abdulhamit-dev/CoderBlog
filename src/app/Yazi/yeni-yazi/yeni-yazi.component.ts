@@ -18,11 +18,7 @@ import { YaziService } from 'src/app/services/yazi/yazi.service';
 export class YeniYaziComponent implements OnInit {
   imageChangedEvent: any = '';
   kirpilanResim: any = '';
-  canvasRotation = 0;
-  rotation = 0;
-  scale = 1;
   showCropper = false;
-  transform: ImageTransform = {};
 
   constructor(
     private yaziService: YaziService,

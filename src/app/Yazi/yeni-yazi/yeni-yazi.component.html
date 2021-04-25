@@ -23,10 +23,12 @@
                 <input type="file" (change)="FileChangeEvent($event)" #fileuploader />
               </div>
               <div class="p-col-12 p-md-8">
+
                 <image-cropper style="width: 768px;height: auto;" [imageChangedEvent]="imageChangedEvent"
-                    [aspectRatio]="4 / 3" [resizeToWidth]="512"
+                    [aspectRatio]="4 / 2" [resizeToWidth]="768"
                     [style.display]="showCropper ? null : 'none'" format="png" (imageCropped)="ImageCropped($event)"
                     (imageLoaded)="ImageLoaded()"></image-cropper>
+
               </div>
             </div>
           </div>

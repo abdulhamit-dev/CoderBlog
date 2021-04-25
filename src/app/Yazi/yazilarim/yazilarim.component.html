@@ -36,8 +36,11 @@
         <div class="p-field">
             <div class="p-grid">
                 <div class="p-col-12 p-md-12">
-                    Değiştirmek için resmi seçiniz : <input pInputText type="file" #file placeholder="Yazi için bir resim seçiniz"
-                        (change)="ResimGor($event)">
+                    Değiştirmek için resim seçiniz(Kırpılı alan kaydedilecektir) : <input type="file" (change)="FileChangeEvent($event)" #fileuploader />
+                        <image-cropper style="width: 768px;height: auto;" [imageChangedEvent]="imageChangedEvent"
+                        [aspectRatio]="4 / 2" [resizeToWidth]="512"
+                        [style.display]="showCropper ? null : 'none'" format="png" (imageCropped)="ImageCropped($event)"
+                        (imageLoaded)="ImageLoaded()"></image-cropper>
                 </div>
             </div>
         </div>
