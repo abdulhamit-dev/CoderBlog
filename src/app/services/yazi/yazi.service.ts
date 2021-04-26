@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { observable, Observable } from 'rxjs';
 import { YaziDto } from 'src/app/models/Dtos/yazi/YaziDto';
 import { YaziFormFileDto } from 'src/app/models/Dtos/yazi/YaziFormFileDto';
 import { YaziPostDto } from 'src/app/models/Dtos/yazi/YaziPostDto';
@@ -30,15 +30,12 @@ export class YaziService extends PublicService {
     });
   }
 
-  YaziEkle(yazi: Yazi,yaziBase64:string): Observable<any> {
-
-    var yaziPostDto:YaziPostDto=new YaziPostDto();
+  YaziEkle(yazi: Yazi, yaziBase64: string): Observable<any> {
+    var yaziPostDto: YaziPostDto = new YaziPostDto();
     yazi.kullaniciId = this.kullanici.id;
     yazi.yaziTarih = new Date();
-    yaziPostDto.yazi=JSON.stringify(yazi);
-    yaziPostDto.yaziBase64=yaziBase64;
-
-
+    yaziPostDto.yazi = JSON.stringify(yazi);
+    yaziPostDto.yaziBase64 = yaziBase64;
 
     return this.http.post<Yazi>(this.baseUrl + 'yazi/YaziKaydet', yaziPostDto);
   }
@@ -69,19 +66,19 @@ export class YaziService extends PublicService {
   YaziListesiKullanici(): Observable<Yazi[]> {
     return this.http.get<Yazi[]>(
       this.baseUrl +
-      'yazi/getlistfilter?kullaniciId=' +
-      this.kullanici.id +
-      '&kategoriId=0'
+        'yazi/getlistfilter?kullaniciId=' +
+        this.kullanici.id +
+        '&kategoriId=0'
     );
   }
 
   YaziListesiKullaniciKategori(kategoriId: number): Observable<Yazi[]> {
     return this.http.get<Yazi[]>(
       this.baseUrl +
-      'yazi/getlistfilter?kullaniciId=' +
-      this.kullanici.id +
-      '&kategoriId=' +
-      kategoriId
+        'yazi/getlistfilter?kullaniciId=' +
+        this.kullanici.id +
+        '&kategoriId=' +
+        kategoriId
     );
   }
 
@@ -94,7 +91,6 @@ export class YaziService extends PublicService {
   }
 
   YaziListesiYeniler(): Observable<any> {
-
     return this.http.get<YaziDto>(this.baseUrl + 'yazi/getlistyeniler', {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -103,12 +99,16 @@ export class YaziService extends PublicService {
     });
   }
 
-  YaziListesiKategori(kategoriAdi:string): Observable<any> {
-    return this.http.get<YaziDto>(this.baseUrl + 'yazi/getlistkategoriyazi?kategoriAdi='+kategoriAdi);
+  YaziListesiKategori(kategoriAdi: string): Observable<any> {
+    return this.http.get<YaziDto>(
+      this.baseUrl + 'yazi/getlistkategoriyazi?kategoriAdi=' + kategoriAdi
+    );
   }
 
   YaziYorumlari(id: number): Observable<any> {
-    return this.http.get<YorumDto>(this.baseUrl + 'yazi/getlistyaziyorum?yaziId=' + id);
+    return this.http.get<YorumDto>(
+      this.baseUrl + 'yazi/getlistyaziyorum?yaziId=' + id
+    );
   }
 
   Begen(yaziId: number): Observable<Begeni> {
@@ -117,13 +117,19 @@ export class YaziService extends PublicService {
     begeni.kullaniciId = +this.kullanici.id;
     begeni.kayitTarihi = new Date();
 
-    return this.http.post<Begeni>(this.baseUrl + "begen/kaydet", begeni);
+    return this.http.post<Begeni>(this.baseUrl + 'begen/kaydet', begeni);
   }
 
   YorumKaydet(yorum: Yorum): Observable<any> {
     yorum.kullaniciId = +this.kullanici.id;
     yorum.kayitTarihi = new Date();
-    return this.http.post<Begeni>(this.baseUrl + "yorum/kaydet", yorum);
+    return this.http.post<Begeni>(this.baseUrl + 'yorum/kaydet', yorum);
   }
 
+  AktifKullaniciId(): number {
+    if (this.kullanici == null)
+    return 0;
+    else
+    return this.kullanici.id;
+  }
 }

@@ -22,9 +22,11 @@ import { DetayComponent } from './detay/detay.component';
 import { DividerModule } from 'primeng/divider';
 import { EditorModule } from 'primeng/editor';
 import { TabViewModule } from 'primeng/tabview';
-import {ConfirmPopupModule} from 'primeng/confirmpopup';
-import {ConfirmationService,MessageService} from 'primeng/api';
-import { ToastModule } from "primeng/toast";
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { ChipModule } from 'primeng/chip';
+import { AvatarModule } from 'primeng/avatar';
 
 import { ImageCropperModule } from 'ngx-image-cropper';
 
@@ -56,11 +58,10 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     TabViewModule,
     ConfirmPopupModule,
     ToastModule,
-    ImageCropperModule
-
-
-
+    ImageCropperModule,
+    ChipModule,
+    AvatarModule,
   ],
-  providers:[ConfirmationService,MessageService]
+  providers: [ConfirmationService, MessageService],
 })
 export class YaziModule {}

@@ -1,52 +1,89 @@
 <div class="p-grid" style="margin-top: 20px;">
-    <div class="p-col p-md-2 p-sm-12">
-        <div class="box"></div>
-    </div>
-    <div class="p-col-12 p-md-8 p-sm-12">
-        <div class="box">
-            <p-card [style]="{'width': '100%'}" styleClass="p-card-shadow p-shadow-3">
-                <ng-template pTemplate="header">
-                    <br>
-                    <div class="p-text-center"> <img alt="Card" *ngIf="yazi.yaziKapakResim!=null"
-                            [style]="{'width':'75%','height':'auto'}"
-                            src="https://api.yilmazcoder.online/resources/yaziKapakResim/{{yazi.yaziKapakResim}}"></div>
-                </ng-template>
-                <span style="font-size: large;"><b>{{yazi.yaziBaslik}}</b></span><br>
-                <div [innerHTML]="yazi.yaziIcerik"></div>
-                <ng-template pTemplate="footer">
-                    {{yazi.kullaniciAdi}}
-                    <i class="fas fa-heart"
-                        style="font-size: 1rem;margin-right: 10px;margin-left: 10px;cursor: pointer;" (click)="Begen()">
-                        {{yazi.begeniSayisi}}</i>
-                    <i class="fas fa-comments" style="font-size: 1rem;cursor: pointer;" (click)="YorumDialog()">
-                        {{yazi.yorumSayisi}}</i>
-                    <span style="float: right;">{{yazi.yaziTarih | date:"dd.MM.yyyy" }}</span>
-                </ng-template>
-            </p-card>
-            <p-divider>
+  <div class="p-col p-md-2 p-sm-12">
+    <div class="box"></div>
+  </div>
+  <div class="p-col-12 p-md-8 p-sm-12">
+    <div class="box">
+      <p-card [style]="{'width': '100%','padding':'20px'}" styleClass="p-card-shadow p-shadow-3">
 
-            </p-divider>
-            <p-card>
-                <div *ngFor="let yorum of yorumList">
-                    <b>{{yorum.kullaniciAdi}}</b><br>
-                    {{yorum.aciklama}} <span style="float: right;">{{yorum.kayitTarihi | date:"dd.MM.yyyy"}}</span>
-                    <p-divider>
-                    </p-divider>
-                </div>
-            </p-card>
+
+        <span style="font-size: x-large;" ><b><div class="p-text-left" >{{yazi.yaziBaslik}}</div> </b></span>
+        <br>
+        <div class="p-d-flex p-ai-center">
+          <div class="p-mr-1">
+            <p-chip *ngIf="yazi.kullaniciResmi!=null" label="{{yazi.kullaniciAdi}} " style="float: left;"
+            image="https://api.yilmazcoder.online/resources/profilResmi/{{yazi.kullaniciResmi}}"
+            styleClass="p-mr-2 custom-chip"></p-chip>
+
+          <p-chip *ngIf="yazi.kullaniciResmi==null" label="{{yazi.kullaniciAdi}}" image="assets/profilResmi/nouser.png" style="float: left;"
+            styleClass="p-mr-5 custom-chip"></p-chip>
+          </div>
+          <div class="p-mr-5">
+            {{yazi.yaziTarih | date:"dd.MM.yyyy hh:mm" }}
+          </div>
+
+      </div>
+
+        <br>
+
+        <div class="p-text-center"> <img alt="Card" *ngIf="yazi.yaziKapakResim!=null"
+            [style]="{'width':'100%','height':'auto'}"
+            src="https://api.yilmazcoder.online/resources/yaziKapakResim/{{yazi.yaziKapakResim}}">
         </div>
+
+
+        <br>
+        <div [innerHTML]="yazi.yaziIcerik"></div>
+
+        <ng-template pTemplate="footer">
+          <i class="fas fa-heart" style="font-size: 1rem;margin-right: 10px;margin-left: 10px;cursor: pointer;"
+            (click)="Begen()">
+            {{yazi.begeniSayisi}}</i>
+          <i class="fas fa-comments" style="font-size: 1rem;cursor: pointer;" >
+            {{yazi.yorumSayisi}}</i>
+
+        </ng-template>
+       </p-card>
+       <p-divider align="right">
+        <p-button label="Yorum Yap" (click)="YorumDialog()" icon="fas fa-comments" styleClass="p-button-outlined"></p-button>
+    </p-divider>
+      <p-card *ngFor="let yorum of yorumList" [style]="{'margin-bottom': '10px'}">
+
+          <div class="p-d-flex p-ai-center">
+            <div class="p-mr-1">
+              <p-chip *ngIf="yazi.kullaniciResmi!=null" label="{{yazi.kullaniciAdi}} " style="float: left;"
+              image="https://api.yilmazcoder.online/resources/profilResmi/{{yazi.kullaniciResmi}}"
+              styleClass="p-mr-2 custom-chip"></p-chip>
+
+            <p-chip *ngIf="yazi.kullaniciResmi==null" label="{{yazi.kullaniciAdi}}" image="assets/profilResmi/nouser.png" style="float: left;"
+              styleClass="p-mr-5 custom-chip"></p-chip>
+            </div>
+            <div class="p-mr-5">
+
+            </div>
+            <div>
+               {{yazi.yaziTarih | date:"dd.MM.yyyy hh:mm" }}
+            </div>
+
+          </div>
+        <p-divider></p-divider>
+        {{yorum.aciklama}}
+      </p-card>
     </div>
-    <div class="p-col-12 p-md-2 p-sm-12">
-        <div class="box"></div>
-    </div>
+  </div>
+  <div class="p-col-12 p-md-2 p-sm-12">
+    <div class="box"></div>
+  </div>
 </div>
 
 
-<p-dialog header="Yorumunuz" [(visible)]="modal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
-    [draggable]="false" [resizable]="false">
-    <textarea type="text" id="txtYorum" style="width: 100%;" [rows]="7" placeholder="Yorum yazınız.." pInputTextarea
-        [(ngModel)]="yorum.aciklama"></textarea>
-    <ng-template pTemplate="footer">
-        <p-button icon="pi pi-check" (click)="YorumYap()" label="Gönder" styleClass="p-button-text"></p-button>
-    </ng-template>
+<p-dialog header="Yorumunuz" [(visible)]="modal"  [style]="{width: '80vw'}" [baseZIndex]="10000"
+  [draggable]="false" [resizable]="false">
+  <textarea type="text" id="txtYorum" style="width: 100%;" [rows]="7" placeholder="Yorum yazınız.." pInputTextarea
+    [(ngModel)]="yorum.aciklama"></textarea>
+  <ng-template pTemplate="footer">
+    <p-button icon="pi pi-check" (click)="YorumYap()" label="Gönder" styleClass="p-button-text"></p-button>
+  </ng-template>
 </p-dialog>
+
+<p-toast></p-toast>
