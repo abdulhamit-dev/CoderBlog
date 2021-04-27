@@ -21,6 +21,12 @@
           <div class="p-mr-5">
             {{yazi.yaziTarih | date:"dd.MM.yyyy hh:mm" }}
           </div>
+          <div class="p-mr-5">
+            {{yazi.begeniSayisi}}  <i class="fas fa-heart" style="font-size: 1rem;"></i> Beğeni
+          </div>
+          <div class="p-mr-5">
+            {{yazi.yorumSayisi}}  <i class="fas fa-comment" style="font-size: 1rem;"></i> Yorum
+          </div>
 
       </div>
 
@@ -36,17 +42,18 @@
         <div [innerHTML]="yazi.yaziIcerik"></div>
 
         <ng-template pTemplate="footer">
-          <i class="fas fa-heart" style="font-size: 1rem;margin-right: 10px;margin-left: 10px;cursor: pointer;"
+          <!-- <i class="fas fa-heart" style="font-size: 1rem;margin-right: 10px;margin-left: 10px;cursor: pointer;"
             (click)="Begen()">
             {{yazi.begeniSayisi}}</i>
           <i class="fas fa-comments" style="font-size: 1rem;cursor: pointer;" >
-            {{yazi.yorumSayisi}}</i>
-
+            {{yazi.yorumSayisi}}</i> -->
+            <p-divider align="left">
+              <p-button label="{{yazi.begeniSayisi}}" (click)="Begen()" icon="fas fa-heart" styleClass="p-button-outlined p-mr-2" ></p-button>
+              <p-button label="{{yazi.yorumSayisi}}" (click)="YorumDialog()" icon="fas fa-comments" styleClass="p-button-outlined"></p-button>
+          </p-divider>
         </ng-template>
        </p-card>
-       <p-divider align="right">
-        <p-button label="Yorum Yap" (click)="YorumDialog()" icon="fas fa-comments" styleClass="p-button-outlined"></p-button>
-    </p-divider>
+      <p-divider></p-divider>
       <p-card *ngFor="let yorum of yorumList" [style]="{'margin-bottom': '10px'}">
 
           <div class="p-d-flex p-ai-center">

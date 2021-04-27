@@ -36,22 +36,26 @@ export class MenubarComponent implements OnInit {
   MenuDataLoad() {
     this.items = [
       {
-        label: 'CoderBlog',
-        icon: 'pi pi-fw pi-home',
-        routerLink: 'home'
+        label: '<b>CoderBlog</b>',
+        icon: 'fas fa-home',
+        routerLink: 'home',
+        escape:false
+
       },
       {
-        label: 'Kategoriler',
-        icon: 'pi pi-fw pi-ellipsis-h',
+        label: '<b>Kategoriler</b>',
+        icon: 'fas fa-layer-group',
         routerLink: 'kategori',
+        escape:false
       },
       {
-        label: 'Yazı',
-        icon: 'pi pi-fw pi-file',
+        label: '<b>Yazı</b>',
+        icon: 'fas fa-file-signature',
+        escape:false,
         items: [
           {
             label: 'Yeni',
-            icon: 'pi pi-fw pi-plus-circle',
+            icon: 'fas fa-plus',
             routerLink: 'yazi/yeni',
           },
           {
@@ -60,12 +64,12 @@ export class MenubarComponent implements OnInit {
 
           {
             label: 'Yazılarım',
-            icon: 'pi pi-fw pi-list',
+            icon: 'fas fa-stream',
             routerLink: 'yazi/yazilarim',
           },
           {
             label: 'Taslak',
-            icon: 'pi pi-fw pi-folder',
+            icon: 'fas fa-thumbtack',
             routerLink: 'yazi/taslak',
           },
         ],

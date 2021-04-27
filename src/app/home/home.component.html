@@ -28,9 +28,11 @@
             <span style="cursor: pointer;font-size: large;"><b>{{yazi.yaziBaslik}}</b></span>
             <p-divider></p-divider>
 
-            <img src="assets/like.png" style="width: 15px;height: 15px;"><strong class="p-mr-3">
-              {{yazi.begeniSayisi}}</strong>
-            <img src="assets/comment.png" style="width: 15px;height: 15px;"><strong> {{yazi.yorumSayisi}}</strong>
+
+            <strong class="p-mr-3"><i class="far fa-heart"></i> {{yazi.begeniSayisi}}</strong>
+
+            <strong><i class="far fa-comments"></i> {{yazi.yorumSayisi}}</strong>
+
             <span style="float: right;"><strong>{{yazi.yaziTarih | date:"dd.MM hh:mm" }}</strong></span>
 
 
